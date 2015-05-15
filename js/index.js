@@ -34,6 +34,53 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
+        var logToDom = function (message) {
+            var element = document.getElementById('heading');
+            element.innerHTML = message;
+        };
+
+        try {
+            var delegate = new cordova.plugins.locationManager.Delegate();
+            /*
+            delegate.didDetermineStateForRegion = function (pluginResult) {
+
+                logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+
+                cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
+                    + JSON.stringify(pluginResult));
+            };
+
+            delegate.didStartMonitoringForRegion = function (pluginResult) {
+                console.log('didStartMonitoringForRegion:', pluginResult);
+
+                logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+            };
+
+            delegate.didRangeBeaconsInRegion = function (pluginResult) {
+                logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            };
+
+            var uuid = 'A495FF99-C5B1-4B44-B512-1370F02D74DE';
+            var identifier = 'TheBean';
+            var minor = 99;
+            var major = 2;
+            var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
+
+            cordova.plugins.locationManager.setDelegate(delegate);
+
+            // required in iOS 8+
+            cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
+            // or cordova.plugins.locationManager.requestAlwaysAuthorization()
+
+            cordova.plugins.locationManager.startMonitoringForRegion(beaconRegion)
+                .fail(console.error)
+                .done();
+            */
+        } catch(err) {
+            //logToDom('test 1c');
+            logToDom(err.message);
+        }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
