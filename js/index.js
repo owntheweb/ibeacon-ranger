@@ -40,8 +40,10 @@ var app = {
             element.innerHTML = message;
         };
 
+        logToDom('test 1');
         try {
             var delegate = new cordova.plugins.locationManager.Delegate();
+            logToDom('test 2');
             /*
             delegate.didDetermineStateForRegion = function (pluginResult) {
 
@@ -78,7 +80,6 @@ var app = {
                 .done();
             */
         } catch(err) {
-            //logToDom('test 1c');
             logToDom(err.message);
         }
     },
