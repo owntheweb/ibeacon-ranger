@@ -43,8 +43,7 @@ var app = {
         logToDom('test 1');
         try {
             var delegate = new cordova.plugins.locationManager.Delegate();
-            logToDom('test 2');
-            /*
+            
             delegate.didDetermineStateForRegion = function (pluginResult) {
 
                 logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
@@ -64,8 +63,8 @@ var app = {
             };
 
             var uuid = 'A495FF99-C5B1-4B44-B512-1370F02D74DE';
-            var identifier = 'TheBean';
-            var minor = 99;
+            var identifier = 'iBean';
+            var minor = 1;
             var major = 2;
             var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
 
@@ -78,7 +77,6 @@ var app = {
             cordova.plugins.locationManager.startMonitoringForRegion(beaconRegion)
                 .fail(console.error)
                 .done();
-            */
         } catch(err) {
             logToDom(err.message);
         }
