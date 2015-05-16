@@ -84,13 +84,13 @@ var app = {
                 logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
             };
 
-
+            */
             var uuid = 'A495FF99-C5B1-4B44-B512-1370F02D74DE';
             var identifier = 'iBean';
             var major = 1;
             var minor = 2;
             var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
-            */
+            
             
             
             cordova.plugins.locationManager.setDelegate(delegate);
