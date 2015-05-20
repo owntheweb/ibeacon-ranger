@@ -78,7 +78,7 @@ var app = {
 
             delegate.didDetermineStateForRegion = function (pluginResult) {
 
-                logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+                this.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
                 cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
                     + JSON.stringify(pluginResult));
@@ -87,11 +87,11 @@ var app = {
             delegate.didStartMonitoringForRegion = function (pluginResult) {
                 console.log('didStartMonitoringForRegion:', pluginResult);
 
-                logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+                this.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
             };
 
             delegate.didRangeBeaconsInRegion = function (pluginResult) {
-                logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+                this.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
             };
 
             */
@@ -108,7 +108,7 @@ var app = {
                 .done();
             */
         } catch(err) {
-            logToDom(err.message);
+            this.logToDom(err.message);
         }
     },
     //handle location manager events for an iBeacon
@@ -117,7 +117,7 @@ var app = {
             
         delegate.didDetermineStateForRegion = function (pluginResult) {
 
-            logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            this.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
                 + JSON.stringify(pluginResult));
@@ -126,11 +126,11 @@ var app = {
         delegate.didStartMonitoringForRegion = function (pluginResult) {
             console.log('didStartMonitoringForRegion:', pluginResult);
 
-            logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+            this.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
-            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            this.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };;
 
         return delegate;
