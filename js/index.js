@@ -149,12 +149,12 @@ var app = {
         cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
         // or cordova.plugins.locationManager.requestAlwaysAuthorization()
 
-        for(i=0; i<monitorBeacons.length; i++) {
+        for(i=0; i<this.monitorBeacons.length; i++) {
             //set iBeacon's region
-            monitorBeacons[i].region = new cordova.plugins.locationManager.BeaconRegion(monitorBeacons[i].identifier, monitorBeacons[i].uuid, monitorBeacons[i].major, monitorBeacons[i].minor);
+            this.monitorBeacons[i].region = new cordova.plugins.locationManager.BeaconRegion(this.monitorBeacons[i].identifier, this.monitorBeacons[i].uuid, this.monitorBeacons[i].major, this.monitorBeacons[i].minor);
 
             //start monitoring the iBeacon!
-            cordova.plugins.locationManager.startMonitoringForRegion(monitorBeacons[i].region)
+            cordova.plugins.locationManager.startMonitoringForRegion(this.monitorBeacons[i].region)
                 .fail(console.error)
                 .done();
         }
