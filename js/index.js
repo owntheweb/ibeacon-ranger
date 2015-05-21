@@ -77,23 +77,28 @@ var app = {
     },
     // Start monitoring if within proximity of iBeacons (with app running or not!)
     startMonitoringBeacons: function() {
+        this.logToDom('test 2...');
         var i;
         var deligate = this.setMonitorDeligate();
 
+        this.logToDom('test 3...');
         cordova.plugins.locationManager.setDelegate(delegate);
 
         // required in iOS 8+
         //!!! might be nice to show a message about the "this app wishes to monitor you location"
         //explaining what how iBeacons will be used to enrich the experience before the user
         //things we are tracking them in their sleep...
+        this.logToDom('test 4...');
         cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
         // or cordova.plugins.locationManager.requestAlwaysAuthorization()
 
         for(i=0; i<this.monitorBeacons.length; i++) {
             //set iBeacon's region
+            this.logToDom('test 5...');
             this.monitorBeacons[i].region = new cordova.plugins.locationManager.BeaconRegion(this.monitorBeacons[i].identifier, this.monitorBeacons[i].uuid, this.monitorBeacons[i].major, this.monitorBeacons[i].minor);
 
             //start monitoring the iBeacon!
+            this.logToDom('test 6...');
             cordova.plugins.locationManager.startMonitoringForRegion(this.monitorBeacons[i].region)
                 .fail(console.error)
                 .done();
@@ -118,7 +123,9 @@ var app = {
         app.receivedEvent('deviceready');
 
         try {
+            this.logToDom('test 1...');
             this.startMonitoringBeacons();
+            
 
             /*
             var delegate = new cordova.plugins.locationManager.Delegate();
