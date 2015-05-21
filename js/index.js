@@ -46,12 +46,12 @@ var app = {
             minor:2
         }
     ],
-    /*
     // !!! temporary test function
     logToDom: function(message) {
         var element = document.getElementById('heading');
             element.innerHTML = message;
     },
+    /*
     //handle location manager events for an iBeacon
     setMonitorDeligate: function() {
         var delegate = new cordova.plugins.locationManager.Delegate();
@@ -125,8 +125,8 @@ var app = {
         app.receivedEvent('deviceready');
 
         try {
-            alert('*cough!');
-            //this.logToDom('test 1...');
+            //alert('*cough!');
+            app.logToDom('test 1...');
             //this.startMonitoringBeacons();
             
 
