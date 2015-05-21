@@ -125,8 +125,8 @@ var app = {
         app.receivedEvent('deviceready');
 
         try {
-            //alert('*cough!');
-            app.logToDom('test 1...');
+            navigator.notification.alert('Test 1', function() { }, 'Testing', 'Done');
+            //this.logToDom('test 1...');
             //this.startMonitoringBeacons();
             
 
@@ -164,9 +164,12 @@ var app = {
                 .fail(console.error)
                 .done();
             */
+        
         } catch(err) {
-            app.logToDom(err.message);
+            alert('hmm');
+            //app.logToDom(err.message);
         }
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
