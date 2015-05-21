@@ -165,7 +165,7 @@ var app = {
                 .done();
             */
         } catch(err) {
-            this.logToDom(err.message);
+            app.logToDom(err.message);
         }
     },
     // Update DOM on a Received Event
