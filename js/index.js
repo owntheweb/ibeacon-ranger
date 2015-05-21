@@ -46,6 +46,7 @@ var app = {
             minor:2
         }
     ],
+    /*
     // !!! temporary test function
     logToDom: function(message) {
         var element = document.getElementById('heading');
@@ -104,6 +105,7 @@ var app = {
                 .done();
         }
     },
+    */
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -124,8 +126,8 @@ var app = {
 
         try {
             alert('*cough!');
-            this.logToDom('test 1...');
-            this.startMonitoringBeacons();
+            //this.logToDom('test 1...');
+            //this.startMonitoringBeacons();
             
 
             /*
