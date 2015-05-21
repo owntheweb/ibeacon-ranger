@@ -51,14 +51,13 @@ var app = {
         var element = document.getElementById('heading');
             element.innerHTML = message;
     },
-    /*
     //handle location manager events for an iBeacon
     setMonitorDeligate: function() {
         var delegate = new cordova.plugins.locationManager.Delegate();
             
         delegate.didDetermineStateForRegion = function (pluginResult) {
 
-            this.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            app.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
                 + JSON.stringify(pluginResult));
@@ -67,45 +66,39 @@ var app = {
         delegate.didStartMonitoringForRegion = function (pluginResult) {
             console.log('didStartMonitoringForRegion:', pluginResult);
 
-            this.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+            app.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
-            this.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            app.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };;
 
         return delegate;
     },
     // Start monitoring if within proximity of iBeacons (with app running or not!)
     startMonitoringBeacons: function() {
-        this.logToDom('test 2...');
         var i;
-        var deligate = this.setMonitorDeligate();
+        var deligate = app.setMonitorDeligate();
 
-        this.logToDom('test 3...');
         cordova.plugins.locationManager.setDelegate(delegate);
 
         // required in iOS 8+
         //!!! might be nice to show a message about the "this app wishes to monitor you location"
         //explaining what how iBeacons will be used to enrich the experience before the user
         //things we are tracking them in their sleep...
-        this.logToDom('test 4...');
         cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
         // or cordova.plugins.locationManager.requestAlwaysAuthorization()
 
-        for(i=0; i<this.monitorBeacons.length; i++) {
+        for(i=0; i<app.monitorBeacons.length; i++) {
             //set iBeacon's region
-            this.logToDom('test 5...');
-            this.monitorBeacons[i].region = new cordova.plugins.locationManager.BeaconRegion(this.monitorBeacons[i].identifier, this.monitorBeacons[i].uuid, this.monitorBeacons[i].major, this.monitorBeacons[i].minor);
+            app.monitorBeacons[i].region = new cordova.plugins.locationManager.BeaconRegion(app.monitorBeacons[i].identifier, app.monitorBeacons[i].uuid, app.monitorBeacons[i].major, app.monitorBeacons[i].minor);
 
             //start monitoring the iBeacon!
-            this.logToDom('test 6...');
-            cordova.plugins.locationManager.startMonitoringForRegion(this.monitorBeacons[i].region)
+            cordova.plugins.locationManager.startMonitoringForRegion(app.monitorBeacons[i].region)
                 .fail(console.error)
                 .done();
         }
     },
-    */
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -125,10 +118,7 @@ var app = {
         app.receivedEvent('deviceready');
 
         try {
-            navigator.notification.alert('Test 1', function() { }, 'Testing', 'Done');
-            app.logToDom('test 2');
-            navigator.notification.alert('Test 3', function() { }, 'Testing', 'Done');
-            //this.startMonitoringBeacons();
+            app.startMonitoringBeacons();
             
 
             /*
