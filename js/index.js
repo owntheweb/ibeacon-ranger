@@ -129,7 +129,7 @@ var app = {
     // Start monitoring iBeacon ranges
     startRangingBeacons: function() {
         var i;
-        var delegate = app.setMonitorDeligate();
+        var delegate = app.setRangeDeligate();
 
         cordova.plugins.locationManager.setDelegate(delegate);
 
