@@ -78,7 +78,7 @@ var app = {
     // Start monitoring if within proximity of iBeacons (with app running or not!)
     startMonitoringBeacons: function() {
         var i;
-        var deligate = app.setMonitorDeligate();
+        var delegate = app.setMonitorDeligate();
 
         cordova.plugins.locationManager.setDelegate(delegate);
 
