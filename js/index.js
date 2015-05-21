@@ -48,6 +48,7 @@ var app = {
     ],
     // !!! temporary test function
     logToDom: function(message) {
+        navigator.notification.alert('logToDom: ' + message, function() { }, 'logToDom', 'Done');
         var element = document.getElementById('heading');
             element.innerHTML = message;
     },
@@ -126,7 +127,8 @@ var app = {
 
         try {
             navigator.notification.alert('Test 1', function() { }, 'Testing', 'Done');
-            //this.logToDom('test 1...');
+            this.logToDom('test 2');
+            navigator.notification.alert('Test 3', function() { }, 'Testing', 'Done');
             //this.startMonitoringBeacons();
             
 
