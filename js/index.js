@@ -123,6 +123,7 @@ var app = {
         app.receivedEvent('deviceready');
 
         try {
+            alert('*cough!');
             this.logToDom('test 1...');
             this.startMonitoringBeacons();
             
