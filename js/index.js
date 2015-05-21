@@ -51,66 +51,6 @@ var app = {
         var element = document.getElementById('heading');
             element.innerHTML = message;
     },
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-
-        try {
-            
-            this.startMonitoringBeacons();
-
-            /*
-            var delegate = new cordova.plugins.locationManager.Delegate();
-
-            delegate.didDetermineStateForRegion = function (pluginResult) {
-
-                this.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
-
-                cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
-                    + JSON.stringify(pluginResult));
-            };
-
-            delegate.didStartMonitoringForRegion = function (pluginResult) {
-                console.log('didStartMonitoringForRegion:', pluginResult);
-
-                this.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
-            };
-
-            delegate.didRangeBeaconsInRegion = function (pluginResult) {
-                this.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
-            };
-
-            */
-            
-            /*
-            cordova.plugins.locationManager.setDelegate(delegate);
-
-            // required in iOS 8+
-            cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
-            // or cordova.plugins.locationManager.requestAlwaysAuthorization()
-
-            cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
-                .fail(console.error)
-                .done();
-            */
-        } catch(err) {
-            this.logToDom(err.message);
-        }
-    },
     //handle location manager events for an iBeacon
     setMonitorDeligate: function() {
         var delegate = new cordova.plugins.locationManager.Delegate();
@@ -157,6 +97,65 @@ var app = {
             cordova.plugins.locationManager.startMonitoringForRegion(this.monitorBeacons[i].region)
                 .fail(console.error)
                 .done();
+        }
+    },
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+
+        try {
+            this.startMonitoringBeacons();
+
+            /*
+            var delegate = new cordova.plugins.locationManager.Delegate();
+
+            delegate.didDetermineStateForRegion = function (pluginResult) {
+
+                this.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+
+                cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
+                    + JSON.stringify(pluginResult));
+            };
+
+            delegate.didStartMonitoringForRegion = function (pluginResult) {
+                console.log('didStartMonitoringForRegion:', pluginResult);
+
+                this.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+            };
+
+            delegate.didRangeBeaconsInRegion = function (pluginResult) {
+                this.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            };
+
+            */
+            
+            /*
+            cordova.plugins.locationManager.setDelegate(delegate);
+
+            // required in iOS 8+
+            cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
+            // or cordova.plugins.locationManager.requestAlwaysAuthorization()
+
+            cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
+                .fail(console.error)
+                .done();
+            */
+        } catch(err) {
+            this.logToDom(err.message);
         }
     },
     // Update DOM on a Received Event
