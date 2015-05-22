@@ -27,25 +27,37 @@
             identifier:'LightBlue1',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
-            minor:1
+            minor:1,
+            rssi:-999,
+            prox:'unknown',
+            closest: false
         },
         {
             identifier:'LightBlue2',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
-            minor:2
+            minor:2,
+            rssi:-999,
+            prox:'unknown',
+            closest: false
         },
         {
             identifier:'LightBlue3',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
-            minor:3
+            minor:3,
+            rssi:-999,
+            prox:'unknown',
+            closest: false
         },
         {
             identifier:'LightBlue4',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
-            minor:4
+            minor:4,
+            rssi:-999,
+            prox:'unknown',
+            closest: false
         },
     ];
 
@@ -74,8 +86,7 @@
         }
 
         //place it
-        elem = document.getElementById('ranges');
-        elem.innerHTML = html;
+        document.getElementById('ranges').innerHTML = html;
     };
 
     //handle location manager events for an iBeacon when monitoring if whithin proximity
@@ -132,6 +143,7 @@
             for(i=0; i<rangeBeacons.length; i++) {
             	if(pluginResult.region.uuid == rangeBeacons[i].uuid && pluginResult.region.major == rangeBeacons[i].major && pluginResult.region.minor == rangeBeacons[i].minor) {
             		//set RSSI value
+            		rangeBeacons[i].rssi = pluginResult.beacons[0].rssi;
             		document.getElementById('rBeaconRSSI' + rangeBeacons[i].i).innerHTML = pluginResult.beacons[0].rssi;
 
             		//set range/range label values
@@ -152,8 +164,12 @@
             				prox = 'unknown';
             		}
 
+            		rangeBeacons[i].prox = prox;
             		document.getElementById('rBeaconRangeLabel' + rangeBeacons[i].i).innerHTML = prox.toUpperCase();
             		document.getElementById('rBeaconRange' + rangeBeacons[i].i).className = "col col-range range-" + prox;
+
+            		//star closest iBeacon
+            		starClosestBeacon();
 
             		logToDom('[DOM] beaconRegion: ' + JSON.stringify(rangeBeacons[i].region));
 
@@ -166,6 +182,31 @@
 
         return delegate;
     };
+
+	//mark the closest iBeacon with a star
+	//great when thinking about when to trigger content for the closest iBeacon
+    var starClosestBeacon = function() {
+    	var i;
+    	var closest = {uuid:'none', rssi:-999}; //none to be found to start
+    	for(i=0; i<rangeBeacons.length; i++) {
+    		if(rangeBeacons[i].prox != "unknown") {
+    			if(rangeBeacons[i].rssi > closest.rssi) {
+    				closest = rangeBeacons[i];
+    			}
+    		}
+    	}
+
+    	//only update markup if closest iBeacon not closest previously
+    	if(closest.closest == false) {
+    		for(i=0; i<rangeBeacons.length; i++) {
+    			if(closest.i == i) {
+    				document.getElementById('rBeaconStar' + rangeBeacons[i].i).className = "col col-star star-active";
+    			} else {
+    				document.getElementById('rBeaconStar' + rangeBeacons[i].i).className = "col col-star star-not";
+    			}
+    		}
+    	}
+    }
 
     // Start monitoring if within proximity of iBeacons (with app running or not!)
     var startMonitoringBeacons = function() {
