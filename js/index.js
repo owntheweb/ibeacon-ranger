@@ -130,7 +130,7 @@
 
             //update visuals for ranged iBeacon
             for(i=0; i<rangeBeacons.length; i++) {
-            	if(pluginResult.region.uuid == rangeBeacons[i].uuid) {
+            	if(pluginResult.region.uuid == rangeBeacons[i].uuid && pluginResult.region.major == rangeBeacons[i].major && pluginResult.region.minor == rangeBeacons[i].minor) {
             		//set RSSI value
             		document.getElementById('rBeaconRSSI' + rangeBeacons[i].i).innerHTML = pluginResult.beacons[0].rssi;
 
