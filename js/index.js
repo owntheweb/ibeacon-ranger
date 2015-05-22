@@ -119,10 +119,10 @@
         for(i=0; i<monitorBeacons.length; i++) {
             //I KNOW!...
             html += '<div class="row">' + "\n";
-            html += '   <div id="mBeaconColor0" class="col col-color color-not"></div>' + "\n";
-            html += '   <div id="mBeaconStatus0" class="col col-status status-not"></div>' + "\n";
-            html += '   <div id="mBeaconStatusLabel0" class="col col-status-label">SCANNING</div>' + "\n";
-            html += '   <div id="mBeaconIdentifier0" class="col col-status-identifier">' + monitorBeacons[i].identifier + '</div>' + "\n";        
+            html += '   <div id="mBeaconColor0" class="col col-color color-outside"></div>' + "\n";
+            html += '   <div id="mBeaconState0" class="col col-status state-outside"></div>' + "\n";
+            html += '   <div id="mBeaconStateLabel0" class="col col-state-label">SCANNING</div>' + "\n";
+            html += '   <div id="mBeaconIdentifier0" class="col col-state-identifier">' + monitorBeacons[i].identifier + '</div>' + "\n";        
             html += '</div>' + "\n";
         }
 
@@ -134,20 +134,38 @@
     var setDeligate = function() {
         var delegate = new cordova.plugins.locationManager.Delegate();
 
+        //talked about as "monitoring"
         delegate.didDetermineStateForRegion = function (pluginResult) {
+        	var state;
+            
+            //update visuals for monitored iBeacon
+            for(i=0; i<monitorBeacons.length; i++) {
+            	if(pluginResult.region.uuid == monitorBeacons[i].uuid && pluginResult.region.major == monitorBeacons[i].major && pluginResult.region.minor == monitorBeacons[i].minor) {
+            		//set status label values
+            		if(pluginResult.state == "CLRegionStateInside") {
+            			state = 'inside';
+            		} else {
+            			state = 'outside';
+            		}
 
-            logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            		document.getElementById('mBeaconStateLabel' + monitorBeacons[i].i).innerHTML = state.toUpperCase();
+            		document.getElementById('mBeaconState' + monitorBeacons[i].i).className = "col col-state state-" + prox;
+            	}
+            }
+
+            //logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             //cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
             //    + JSON.stringify(pluginResult));
         };
 
-        delegate.didStartMonitoringForRegion = function (pluginResult) {
+        //delegate.didStartMonitoringForRegion = function (pluginResult) {
             //console.log('didStartMonitoringForRegion:', pluginResult);
 
             //logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
-        };
+        //};
 
+        //talked about as "ranging"
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
             var prox;
 
