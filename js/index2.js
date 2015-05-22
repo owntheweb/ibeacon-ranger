@@ -167,18 +167,10 @@
         bindEvents();
     };
 
-    //bind event listeners
-    /*
-    var bindEvents = function() {
-        document.addEventListener('deviceready', onDeviceReady, false);
-    };
-    */
-
     //deviceready event handler
     var onDeviceReady = function() {
-    	alert('onDeviceReady');
         try {
-            //createRangeListMarkup();
+            createRangeListMarkup();
             startRangingBeacons();
 
 
