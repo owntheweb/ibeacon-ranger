@@ -155,7 +155,7 @@
             		document.getElementById('rBeaconRangeLabel' + rangeBeacons[i].i).innerHTML = prox.toUpperCase();
             		document.getElementById('rBeaconRange' + rangeBeacons[i].i).className = "col col-range range-" + prox;
 
-            		logToDom('[DOM] beaconRegion: ' + JSON.stringify(rangeBeacons[i].beaconRegion));
+            		logToDom('[DOM] beaconRegion: ' + JSON.stringify(rangeBeacons[i].region));
 
             		break;
             	}
