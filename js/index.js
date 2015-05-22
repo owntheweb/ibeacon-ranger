@@ -44,6 +44,7 @@
         var html = '';
         for(i=0; i<rangeBeacons.length; i++) {
             //I KNOW!...
+            //!!! consider also showing "accuracy"
             html += '<div class="row">' + "\n";
             html += '   <div id="rBeaconColor' + i + '" class="col col-color color-' + i + '"></div>' + "\n";
             html += '   <div id="rBeaconStar' + i + '" class="col col-star star-not"></div>' + "\n";
@@ -61,6 +62,7 @@
 
     //handle location manager events for an iBeacon when monitoring if whithin proximity
     var setMonitorDeligate = function() {
+        var i;
         var delegate = new cordova.plugins.locationManager.Delegate();
             
         delegate.didDetermineStateForRegion = function (pluginResult) {
@@ -78,6 +80,15 @@
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
+            //update visuals for ranged iBeacon
+            for(i=0; i<rangeBeacons.length; i++) {
+            	if(pluginResult.region.uuid == rangeBeacons[i].uuid) {
+            		document.getElementById('rBeaconRSSI' + rangeBeacons[i].i).innerHTML = pluginResult.beacons[0].rssi;
+            		
+            		break;
+            	}
+            }
+
             logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
