@@ -58,6 +58,7 @@ var app = {
         var html = '';
         for(i=0; i<app.rangeBeacons.length; i++) {
             //I KNOW!...
+            /*
             html += '<div class="row">' + "\n";
             html += '   <div id="rBeaconColor' + i + '" class="col col-color color-' + i + '"></div>' + "\n";
             html += '   <div id="rBeaconStar' + i + '" class="col col-star star-not"></div>' + "\n";
@@ -66,6 +67,9 @@ var app = {
             html += '   <div id="rBeaconIdentifyer' + i + '" class="col col-identifier">' + app.rangeBeacons[i].identifier + '</div>' + "\n";
             html += '   <div id="rBeaconRSSI' + i + '" class="col col-rssi">----</div>' + "\n";         
             html += '</div>' + "\n";
+            */
+
+            html += 'TEST ';
         }
 
         //place it
