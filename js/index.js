@@ -155,11 +155,13 @@
             		document.getElementById('rBeaconRangeLabel' + rangeBeacons[i].i).innerHTML = prox.toUpperCase();
             		document.getElementById('rBeaconRange' + rangeBeacons[i].i).className = "col col-range range-" + prox;
 
+            		logToDom('[DOM] beaconRegion: ' + JSON.stringify(rangeBeacons[i].beaconRegion));
+
             		break;
             	}
             }
 
-            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
         return delegate;
