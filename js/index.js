@@ -89,6 +89,25 @@
         document.getElementById('ranges').innerHTML = html;
     };
 
+    //create markup for monitor list
+    //!!! I know! markup mixed in with logic.... I know! I know...
+    var createMonitorListMarkup = function() {
+        var i, html, elem;
+        var html = '';
+        for(i=0; i<monitorBeacons.length; i++) {
+            //I KNOW!...
+            html += '<div class="row">' + "\n";
+            html += '   <div id="mBeaconColor0" class="col col-color color-not"></div>' + "\n";
+            html += '   <div id="mBeaconStatus0" class="col col-status status-not"></div>' + "\n";
+            html += '   <div id="mBeaconStatusLabel0" class="col col-status-label">SCANNING</div>' + "\n";
+            html += '   <div id="mBeaconIdentifier0" class="col col-status-identifier">' + monitorBeacons[i].identifier + '</div>' + "\n";        
+            html += '</div>' + "\n";
+        }
+
+        //place it
+        document.getElementById('monitors').innerHTML = html;
+    };
+
     //handle location manager events for an iBeacon when monitoring if whithin proximity
     var setMonitorDeligate = function() {
         var i;
@@ -171,7 +190,7 @@
             		//star closest iBeacon
             		starClosestBeacon();
 
-            		logToDom('[DOM] beaconRegion: ' + JSON.stringify(rangeBeacons[i].region));
+            		//logToDom('[DOM] beaconRegion: ' + JSON.stringify(rangeBeacons[i].region));
 
             		break;
             	}
@@ -273,6 +292,7 @@
             startRangingBeacons();
 
 
+            createMonitorListMarkup();
             //startMonitoringBeacons();
         
         } catch(err) {
