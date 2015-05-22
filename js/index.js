@@ -108,11 +108,30 @@
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
+            var prox;
+
             //update visuals for ranged iBeacon
             for(i=0; i<rangeBeacons.length; i++) {
             	if(pluginResult.region.uuid == rangeBeacons[i].uuid) {
-            		var elem = document.getElementById('rBeaconRSSI' + rangeBeacons[i].i);
-            		elem.innerHTML = pluginResult.beacons[0].rssi;
+            		//set RSSI value
+            		document.getElementById('rBeaconRSSI' + rangeBeacons[i].i).innerHTML = pluginResult.beacons[0].rssi;
+
+            		//set range/range label values
+            		switch(pluginResult.beacons[0].proximity) {
+            			case 'ProximityImmediate':
+            				prox = 'immediate';
+            			case 'ProximityNear':
+            				prox = 'near';
+            			case 'ProximityFar':
+            				prox = 'far';
+            			case 'ProximityUnknown':
+            				prox = 'unknown';
+            			default:
+            				prox = 'unknown';
+            		}
+
+            		document.getElementById('rBeaconRangeLabel' + rangeBeacons[i].i).innerHTML = prox.toUpperCase();
+            		document.getElementById('rBeaconRange' + rangeBeacons[i].i).className = "col col-range range-" + prox;
 
             		break;
             	}
