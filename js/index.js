@@ -142,14 +142,14 @@
         delegate.didStartMonitoringForRegion = function (pluginResult) {
             //console.log('didStartMonitoringForRegion:', pluginResult);
 
-            //logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+            logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
         };
 
-        delegate.didRangeBeaconsInRegion = function (pluginResult) {
+        //delegate.didRangeBeaconsInRegion = function (pluginResult) {
            
 
-            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
-        };
+        //    logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+        //};
 
         return delegate;
     };
@@ -166,11 +166,11 @@
             //    + JSON.stringify(pluginResult));
         };
 
-        delegate.didStartMonitoringForRegion = function (pluginResult) {
+        //delegate.didStartMonitoringForRegion = function (pluginResult) {
             //console.log('didStartMonitoringForRegion:', pluginResult);
 
             //logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
-        };
+        //};
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
             var prox;
