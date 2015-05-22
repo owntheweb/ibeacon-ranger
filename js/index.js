@@ -194,7 +194,7 @@ var app = {
         app.receivedEvent('deviceready');
 
         try {
-            app.createRangeListMarkup();
+            //app.createRangeListMarkup();
             app.startRangingBeacons();
 
 
