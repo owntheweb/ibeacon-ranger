@@ -133,17 +133,17 @@
             
         delegate.didDetermineStateForRegion = function (pluginResult) {
 
-            //logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             //cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
             //    + JSON.stringify(pluginResult));
         };
 
-        delegate.didStartMonitoringForRegion = function (pluginResult) {
+        //delegate.didStartMonitoringForRegion = function (pluginResult) {
             //console.log('didStartMonitoringForRegion:', pluginResult);
 
-            logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
-        };
+            //logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+        //};
 
         //delegate.didRangeBeaconsInRegion = function (pluginResult) {
            
