@@ -71,7 +71,7 @@ var app = {
         //place it
         elem = document.getElementById('ranges');
         elem.innerHTML = html;
-    }
+    },
     //handle location manager events for an iBeacon when monitoring if whithin proximity
     setMonitorDeligate: function() {
         var delegate = new cordova.plugins.locationManager.Delegate();
