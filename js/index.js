@@ -49,7 +49,7 @@ var app = {
     // !!! temporary test function
     logToDom: function(message) {
         var elem = document.getElementById('domLog'); //pretty dom huh?
-            elem.innerHTML += '<div>' + message + '</div>';
+            elem.innerHTML = '<div>' + message + '</div>';
     },
     //create markup for range list
     //!!! I know! markup mixed in with logic.... I know! I know...
@@ -78,7 +78,7 @@ var app = {
             
         delegate.didDetermineStateForRegion = function (pluginResult) {
 
-            //app.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            app.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
                 + JSON.stringify(pluginResult));
@@ -87,11 +87,11 @@ var app = {
         delegate.didStartMonitoringForRegion = function (pluginResult) {
             console.log('didStartMonitoringForRegion:', pluginResult);
 
-            //app.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+            app.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
-            //app.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            app.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
         return delegate;
