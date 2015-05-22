@@ -10,7 +10,25 @@
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:1
-        }
+        },
+        {
+            identifier:'LightBlue2',
+            uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
+            major:1,
+            minor:2
+        },
+        {
+            identifier:'LightBlue3',
+            uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
+            major:1,
+            minor:3
+        },
+        {
+            identifier:'LightBlue4',
+            uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
+            major:1,
+            minor:4
+        },
     ];
 
     //When app is active, track the distance from iBeacons,
@@ -115,23 +133,22 @@
             
         delegate.didDetermineStateForRegion = function (pluginResult) {
 
-            logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            //logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
-            cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
-                + JSON.stringify(pluginResult));
+            //cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
+            //    + JSON.stringify(pluginResult));
         };
 
         delegate.didStartMonitoringForRegion = function (pluginResult) {
-            console.log('didStartMonitoringForRegion:', pluginResult);
+            //console.log('didStartMonitoringForRegion:', pluginResult);
 
-            logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+            //logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
            
 
             logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
-            //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult.beacons));
         };
 
         return delegate;
@@ -143,16 +160,16 @@
 
         delegate.didDetermineStateForRegion = function (pluginResult) {
 
-            logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            //logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
-            cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
-                + JSON.stringify(pluginResult));
+            //cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
+            //    + JSON.stringify(pluginResult));
         };
 
         delegate.didStartMonitoringForRegion = function (pluginResult) {
-            console.log('didStartMonitoringForRegion:', pluginResult);
+            //console.log('didStartMonitoringForRegion:', pluginResult);
 
-            logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+            //logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
@@ -245,6 +262,9 @@
         //cordova.plugins.locationManager.requestAlwaysAuthorization();
 
         for(i=0; i<monitorBeacons.length; i++) {
+            //set i for display update purposes for now (instead of "redrawing" everything for now)
+            rangeBeacons[i].i = i;
+
             //set iBeacon's region
             monitorBeacons[i].region = new cordova.plugins.locationManager.BeaconRegion(monitorBeacons[i].identifier, monitorBeacons[i].uuid, monitorBeacons[i].major, monitorBeacons[i].minor);
 
@@ -293,7 +313,7 @@
 
 
             createMonitorListMarkup();
-            //startMonitoringBeacons();
+            startMonitoringBeacons();
         
         } catch(err) {
             alert(err);
