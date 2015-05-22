@@ -120,12 +120,16 @@
             		switch(pluginResult.beacons[0].proximity) {
             			case 'ProximityImmediate':
             				prox = 'immediate';
+            				break;
             			case 'ProximityNear':
             				prox = 'near';
+            				break;
             			case 'ProximityFar':
             				prox = 'far';
+            				break;
             			case 'ProximityUnknown':
             				prox = 'unknown';
+            				break;
             			default:
             				prox = 'unknown';
             		}
