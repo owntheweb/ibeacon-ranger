@@ -42,7 +42,7 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    
+    margin-top: 30px;
 }
 
 /* Landscape layout (with min-width) */
