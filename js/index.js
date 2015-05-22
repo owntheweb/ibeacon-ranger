@@ -83,8 +83,9 @@
             //update visuals for ranged iBeacon
             for(i=0; i<rangeBeacons.length; i++) {
             	if(pluginResult.region.uuid == rangeBeacons[i].uuid) {
-            		document.getElementById('rBeaconRSSI' + rangeBeacons[i].i).innerHTML = pluginResult.beacons[0].rssi;
-            		
+            		var elem = document.getElementById('rBeaconRSSI' + rangeBeacons[i].i);
+            		elem.innerHTML = pluginResult.beacons[0].rssi;
+
             		break;
             	}
             }
