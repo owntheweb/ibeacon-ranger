@@ -80,18 +80,10 @@
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
-            //update visuals for ranged iBeacon
-            for(i=0; i<rangeBeacons.length; i++) {
-            	if(pluginResult.region.uuid == rangeBeacons[i].uuid) {
-            		var elem = document.getElementById('rBeaconRSSI' + rangeBeacons[i].i);
-            		elem.innerHTML = pluginResult.beacons[0].rssi;
+           
 
-            		break;
-            	}
-            }
-
-            //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
-            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult.beacons));
+            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult.beacons));
         };
 
         return delegate;
@@ -116,6 +108,16 @@
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
+            //update visuals for ranged iBeacon
+            for(i=0; i<rangeBeacons.length; i++) {
+            	if(pluginResult.region.uuid == rangeBeacons[i].uuid) {
+            		var elem = document.getElementById('rBeaconRSSI' + rangeBeacons[i].i);
+            		elem.innerHTML = pluginResult.beacons[0].rssi;
+
+            		break;
+            	}
+            }
+
             logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
