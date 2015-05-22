@@ -90,7 +90,8 @@
             	}
             }
 
-            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult.beacons));
         };
 
         return delegate;
