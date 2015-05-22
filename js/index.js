@@ -6,10 +6,10 @@
     //between multiple buildings or very, very large rooms
 	var monitorBeacons = [
         {
-            identifier:'iBean',
+            identifier:'LightBlue1',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
-            minor:2
+            minor:1
         }
     ];
 
@@ -24,11 +24,29 @@
     //iBeacons?
     var rangeBeacons = [
         {
-            identifier:'iBean',
+            identifier:'LightBlue1',
+            uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
+            major:1,
+            minor:1
+        },
+        {
+            identifier:'LightBlue2',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:2
-        }
+        },
+        {
+            identifier:'LightBlue3',
+            uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
+            major:1,
+            minor:3
+        },
+        {
+            identifier:'LightBlue4',
+            uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
+            major:1,
+            minor:4
+        },
     ];
 
     //test function
