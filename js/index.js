@@ -48,16 +48,37 @@ var app = {
     ],
     // !!! temporary test function
     logToDom: function(message) {
-        var element = document.getElementById('heading');
-            element.innerHTML = message;
+        var elem = document.getElementById('domLog'); //pretty dom huh?
+            elem.innerHTML += '<div>' + message + '</div>';
     },
+    //create markup for range list
+    //!!! I know! markup mixed in with logic.... I know! I know...
+    createRangeListMarkup: function() {
+        var i, html, elem;
+        var html = '';
+        for(i=0; i<app.rangeBeacons.length; i++) {
+            //I KNOW!...
+            html += '<div class="row">' + "\n";
+            html += '   <div id="rBeaconColor' + i + '" class="col col-color color-' + i + '"></div>' + "\n";
+            html += '   <div id="rBeaconStar' + i + '" class="col col-star star-not"></div>' + "\n";
+            html += '   <div id="rBeaconRange' + i + '" class="col col-range range-unknown"></div>' + "\n";
+            html += '   <div id="rBeaconRangeLabel' + i + '" class="col col-range-label">SCANNING</div>' + "\n";
+            html += '   <div id="rBeaconIdentifyer' + i + '" class="col col-identifier">' + app.rangeBeacons[i].identifier + '</div>' + "\n";
+            html += '   <div id="rBeaconRSSI' + i + '" class="col col-rssi">----</div>' + "\n";         
+            html += '</div>' + "\n";
+        }
+
+        //place it
+        elem = document.getElementById('ranges');
+        elem.innerHTML = html;
+    }
     //handle location manager events for an iBeacon when monitoring if whithin proximity
     setMonitorDeligate: function() {
         var delegate = new cordova.plugins.locationManager.Delegate();
             
         delegate.didDetermineStateForRegion = function (pluginResult) {
 
-            app.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            //app.logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
                 + JSON.stringify(pluginResult));
@@ -66,11 +87,11 @@ var app = {
         delegate.didStartMonitoringForRegion = function (pluginResult) {
             console.log('didStartMonitoringForRegion:', pluginResult);
 
-            app.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+            //app.logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
         };
 
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
-            app.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            //app.logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
         return delegate;
@@ -138,6 +159,9 @@ var app = {
         //!!! check if this is possible for ranging?: cordova.plugins.locationManager.requestAlwaysAuthorization();
 
         for(i=0; i<app.rangeBeacons.length; i++) {
+            //set i for display update purposes for now (instead of "redrawing" everything for now)
+            app.rangeBeacons[i].i = i;
+
             //set iBeacon's region
             app.rangeBeacons[i].region = new cordova.plugins.locationManager.BeaconRegion(app.rangeBeacons[i].identifier, app.rangeBeacons[i].uuid, app.rangeBeacons[i].major, app.rangeBeacons[i].minor);
 
@@ -166,8 +190,11 @@ var app = {
         app.receivedEvent('deviceready');
 
         try {
-            app.startMonitoringBeacons();
+            app.createRangeListMarkup();
             app.startRangingBeacons();
+
+
+            app.startMonitoringBeacons();
         
         } catch(err) {
             alert(err);

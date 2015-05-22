@@ -18,57 +18,210 @@
  */
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    box-sizing: border-box;
+}
+
+*::after, *::before {
+    box-sizing: border-box;
 }
 
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
+    background-color:#333;
+    font-family:'HelveticaNeue', 'Helvetica Neue', Helvetica, Verdana, sans-serif;
+    font-size:14px;
+    line-height: 1.2em;
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
     width:100%;
+    color: #FFF;
 }
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    
 }
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
+        
     }
 }
 
+/* thanks Twitter Bootstrap */
+.row::after, .row::before {
+    content: " ";
+    display: table;
+}
+
+.row::after {
+    clear: both;
+}
+
+.row {
+    /*margin-left: -10px;
+    margin-right: -10px;*/
+    border-bottom: #333 solid 1px;
+}
+.col {
+    float: left;
+    min-height: 1px;
+    padding: 5px 5px;
+    position: relative;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+h2 {
+    background-color: #666;
+    font-weight: normal;
+    font-size: 20px;
+    padding: 10px 5px;
+    margin: 0px;
+    border-bottom: #333 solid 1px;
+}
+
+.th {
+    font-weight: bold;
+    background-color: #666;
+}
+
+/* cheating a bit on responsive columns since 
+not worring about old IE versions
+Let's see how this works... */
+/* range columns */
+.col-color {
+    width: 1%;
+    min-height: 28px;
+}
+
+.col-star {
+    width: 7%;
+    min-height: 28px;
+}
+
+.col-range {
+    width: 20%;
+}
+
+.col-range-label {
+    width: 23%;
+}
+
+.col-identifier {
+    width: 36%;
+}
+
+.col-rssi {
+    width: 10%;
+}
+
+.star-active {
+    background: transparent url('../img/star-active.png') 5px 2px no-repeat;
+}
+
+.star-not {
+    background: transparent url('../img/star-not.png') 5px 2px no-repeat;
+}
+
+.color-0 {
+    background: #ff0000;
+}
+
+.color-1 {
+    background: #ffff00;
+}
+
+.color-2 {
+    background: #26ff00;
+}
+
+.color-3 {
+    background: #00ffff;
+}
+
+.color-4 {
+    background: #001fff;
+}
+
+.color-5 {
+    background: #ff00ff;
+}
+
+.color-6 {
+    background: #ff7f00;
+}
+
+.color-7 {
+    background: #7dff00;
+}
+
+.color-8 {
+    background: #a700ff;
+}
+
+.color-9 {
+    background: #cccccc;
+}
+
+.range-immediate {
+    background: transparent url('../img/range-immediate.png') 5px 5px no-repeat;
+    min-height: 28px;
+}
+
+.range-near {
+    background: transparent url('../img/range-near.png') 5px 5px no-repeat;
+    min-height: 28px;
+}
+
+.range-far {
+    background: transparent url('../img/range-far.png') 5px 5px no-repeat;
+    min-height: 28px;
+}
+
+.range-unknown {
+    background: transparent url('../img/range-unknown.png') 5px 5px no-repeat;
+    min-height: 28px;
+}
+
+/* monitor columns */
+
+.color-active {
+    background: #fff;
+}
+
+.color-not {
+    background: #666;
+}
+
+.col-status {
+    width: 20%;
+    min-height: 28px;
+}
+
+.col-status-label {
+    width: 36%;
+}
+
+.col-status-identifier {
+    width: 40%;
+}
+
+.status-active {
+    background: transparent url('../img/status-active.png') 5px 5px no-repeat;
+    min-height: 28px;
+}
+
+.status-not {
+    background: transparent url('../img/status-not.png') 5px 5px no-repeat;
+    min-height: 28px;
+}
+
+/*
 h1 {
     font-size:24px;
     font-weight:normal;
@@ -113,3 +266,4 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+*/
