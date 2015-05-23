@@ -241,6 +241,7 @@
     }
 
     // Start monitoring if within proximity of iBeacons (with app running or not!)
+    /*
     var startMonitoringBeacons = function() {
         var i;
 
@@ -257,6 +258,7 @@
                 .done();
         }
     };
+    */
 
     // Start monitoring iBeacon ranges
     var startRangingBeacons = function() {
@@ -284,6 +286,7 @@
     //deviceready event handler
     var onDeviceReady = function() {
         try {
+            logToDom('test 0');
             //manage iBeacon monitoring/ranging events
             var delegate = setDeligate();
             cordova.plugins.locationManager.setDelegate(delegate);
@@ -307,7 +310,7 @@
             createMonitorListMarkup();
 
             logToDom('test 2');
-            startMonitoringBeacons();
+            //startMonitoringBeacons();
 
             logToDom('test 3');
         
