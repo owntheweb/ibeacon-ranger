@@ -241,7 +241,7 @@
     }
 
     // Start monitoring if within proximity of iBeacons (with app running or not!)
-    var startMonitoringBeacons = function(delegate) {
+    var startMonitoringBeacons = function() {
         var i;
 
         for(i=0; i<monitorBeacons.length; i++) {
@@ -259,7 +259,7 @@
     };
 
     // Start monitoring iBeacon ranges
-    var startRangingBeacons = function(deligate) {
+    var startRangingBeacons = function() {
         var i;
 
         for(i=0; i<rangeBeacons.length; i++) {
@@ -299,12 +299,12 @@
 	        //cordova.plugins.locationManager.requestAlwaysAuthorization();
 
 
-            createRangeListMarkup();
-            startRangingBeacons(delegate);
+            //createRangeListMarkup();
+            //startRangingBeacons();
 
 
             createMonitorListMarkup();
-            startMonitoringBeacons(delegate);
+            startMonitoringBeacons();
         
         } catch(err) {
             alert(err);
