@@ -139,6 +139,7 @@
         	var state;
             
             //update visuals for monitored iBeacon
+            /*
             for(i=0; i<monitorBeacons.length; i++) {
             	if(pluginResult.region.uuid == monitorBeacons[i].uuid && pluginResult.region.major == monitorBeacons[i].major && pluginResult.region.minor == monitorBeacons[i].minor) {
             		//set state label values
@@ -152,6 +153,7 @@
             		document.getElementById('mBeaconState' + monitorBeacons[i].i).className = "col col-state state-" + prox;
             	}
             }
+            */
 
             logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
