@@ -119,10 +119,10 @@
         for(i=0; i<monitorBeacons.length; i++) {
             //I KNOW!...
             html += '<div class="row">' + "\n";
-            html += '   <div id="mBeaconColor0" class="col col-color color-outside"></div>' + "\n";
-            html += '   <div id="mBeaconState0" class="col col-state state-outside"></div>' + "\n";
-            html += '   <div id="mBeaconStateLabel0" class="col col-state-label">SCANNING</div>' + "\n";
-            html += '   <div id="mBeaconIdentifier0" class="col col-state-identifier">' + monitorBeacons[i].identifier + '</div>' + "\n";        
+            html += '   <div id="mBeaconColor' + i + '" class="col col-color color-outside"></div>' + "\n";
+            html += '   <div id="mBeaconState' + i + '" class="col col-state state-outside"></div>' + "\n";
+            html += '   <div id="mBeaconStateLabel' + i + '" class="col col-state-label">SCANNING</div>' + "\n";
+            html += '   <div id="mBeaconIdentifier' + i + '" class="col col-state-identifier">' + monitorBeacons[i].identifier + '</div>' + "\n";        
             html += '</div>' + "\n";
         }
 
