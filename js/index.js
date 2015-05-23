@@ -153,7 +153,7 @@
             	}
             }
 
-            //logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             //cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
             //    + JSON.stringify(pluginResult));
