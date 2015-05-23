@@ -6,26 +6,26 @@
     //between multiple buildings or very, very large rooms
 	var monitorBeacons = [
         {
-            identifier:'LightBlue1',
+            identifier:'ib1',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:1
         }
         /*,
         {
-            identifier:'LightBlue2',
+            identifier:'ib2',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:2
         },
         {
-            identifier:'LightBlue3',
+            identifier:'ib3',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:3
         },
         {
-            identifier:'LightBlue4',
+            identifier:'ib4',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:4
@@ -55,7 +55,7 @@
         },
         */
         {
-            identifier:'LightBlue2',
+            identifier:'ib2',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:2,
@@ -64,7 +64,7 @@
             closest: false
         },
         {
-            identifier:'LightBlue3',
+            identifier:'ib3',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:3,
@@ -73,7 +73,7 @@
             closest: false
         },
         {
-            identifier:'LightBlue4',
+            identifier:'ib4',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:4,
@@ -209,7 +209,7 @@
             	}
             }
 
-            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
         return delegate;
