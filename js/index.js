@@ -256,7 +256,7 @@
                 .fail(console.error)
                 .done();
 
-            logToDom(i + ": " + monitorBeacons[i].i);
+            logToDom(monitorBeacons[i].identifier + ", " + monitorBeacons[i].uuid + ", " + monitorBeacons[i].major + ", " + monitorBeacons[i].minor);
         }
     };
 
