@@ -241,7 +241,6 @@
     }
 
     // Start monitoring if within proximity of iBeacons (with app running or not!)
-    /*
     var startMonitoringBeacons = function() {
         var i;
 
@@ -258,7 +257,6 @@
                 .done();
         }
     };
-    */
 
     // Start monitoring iBeacon ranges
     var startRangingBeacons = function() {
@@ -310,7 +308,7 @@
             createMonitorListMarkup();
 
             logToDom('test 2');
-            //startMonitoringBeacons();
+            startMonitoringBeacons();
 
             logToDom('test 3');
         
