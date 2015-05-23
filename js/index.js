@@ -161,13 +161,16 @@
             //    + JSON.stringify(pluginResult));
         };
 
+        /*
         delegate.didStartMonitoringForRegion = function (pluginResult) {
             //console.log('didStartMonitoringForRegion:', pluginResult);
 
             logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
         };
+        */
 
         //talked about as "ranging"
+        /*
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
             var prox;
 
@@ -211,6 +214,7 @@
 
             //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
+        */
 
         return delegate;
     };
@@ -304,7 +308,7 @@
             //createRangeListMarkup();
             //startRangingBeacons();
 
-            createMonitorListMarkup();
+            //createMonitorListMarkup();
             startMonitoringBeacons();
         
         } catch(err) {
