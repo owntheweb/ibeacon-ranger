@@ -302,9 +302,14 @@
             //createRangeListMarkup();
             //startRangingBeacons();
 
+            logToDom('test 1');
 
             createMonitorListMarkup();
+
+            logToDom('test 2');
             startMonitoringBeacons();
+
+            logToDom('test 3');
         
         } catch(err) {
             alert(err);
