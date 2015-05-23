@@ -161,11 +161,11 @@
             //    + JSON.stringify(pluginResult));
         };
 
-        //delegate.didStartMonitoringForRegion = function (pluginResult) {
+        delegate.didStartMonitoringForRegion = function (pluginResult) {
             //console.log('didStartMonitoringForRegion:', pluginResult);
 
-            //logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
-        //};
+            logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+        };
 
         //talked about as "ranging"
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
@@ -253,10 +253,10 @@
 
             //start monitoring the iBeacon!
             cordova.plugins.locationManager.startMonitoringForRegion(monitorBeacons[i].region)
-                .fail(console.error)
-                .done();
+				.fail(console.error)
+				.done();
 
-            logToDom(monitorBeacons[i].identifier + ", " + monitorBeacons[i].uuid + ", " + monitorBeacons[i].major + ", " + monitorBeacons[i].minor);
+            //logToDom(monitorBeacons[i].identifier + ", " + monitorBeacons[i].uuid + ", " + monitorBeacons[i].major + ", " + monitorBeacons[i].minor);
         }
     };
 
