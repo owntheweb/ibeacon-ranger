@@ -170,7 +170,6 @@
         */
 
         //talked about as "ranging"
-        /*
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
             var prox;
 
@@ -214,7 +213,6 @@
 
             //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
-        */
 
         return delegate;
     };
@@ -305,11 +303,11 @@
 	        //cordova.plugins.locationManager.requestAlwaysAuthorization();
 
 
-            //createRangeListMarkup();
-            //startRangingBeacons();
+            createRangeListMarkup();
+            startRangingBeacons();
 
             //createMonitorListMarkup();
-            startMonitoringBeacons();
+            //startMonitoringBeacons();
         
         } catch(err) {
             alert(err);
