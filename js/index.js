@@ -136,7 +136,7 @@
 
         //talked about as "monitoring"
         delegate.didDetermineStateForRegion = function (pluginResult) {
-        	var state;
+        	//var state;
             
             //update visuals for monitored iBeacon
             /*
@@ -209,7 +209,7 @@
             	}
             }
 
-            //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
         return delegate;
