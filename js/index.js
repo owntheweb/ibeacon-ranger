@@ -244,7 +244,7 @@
 
         for(i=0; i<monitorBeacons.length; i++) {
             //set i for display update purposes for now (instead of "redrawing" everything for now)
-            rangeBeacons[i].i = i;
+            monitorBeacons[i].i = i;
 
             //set iBeacon's region
             monitorBeacons[i].region = new cordova.plugins.locationManager.BeaconRegion(monitorBeacons[i].identifier, monitorBeacons[i].uuid, monitorBeacons[i].major, monitorBeacons[i].minor);
