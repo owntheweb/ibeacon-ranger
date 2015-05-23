@@ -255,6 +255,8 @@
             cordova.plugins.locationManager.startMonitoringForRegion(monitorBeacons[i].region)
                 .fail(console.error)
                 .done();
+
+            logToDom(i + ": " + monitorBeacons[i].i);
         }
     };
 
@@ -284,7 +286,6 @@
     //deviceready event handler
     var onDeviceReady = function() {
         try {
-            logToDom('test 0');
             //manage iBeacon monitoring/ranging events
             var delegate = setDeligate();
             cordova.plugins.locationManager.setDelegate(delegate);
@@ -303,14 +304,8 @@
             //createRangeListMarkup();
             //startRangingBeacons();
 
-            logToDom('test 1');
-
             createMonitorListMarkup();
-
-            logToDom('test 2');
             startMonitoringBeacons();
-
-            logToDom('test 3');
         
         } catch(err) {
             alert(err);
