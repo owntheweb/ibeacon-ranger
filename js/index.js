@@ -120,7 +120,7 @@
             //I KNOW!...
             html += '<div class="row">' + "\n";
             html += '   <div id="mBeaconColor0" class="col col-color color-outside"></div>' + "\n";
-            html += '   <div id="mBeaconState0" class="col col-status state-outside"></div>' + "\n";
+            html += '   <div id="mBeaconState0" class="col col-state state-outside"></div>' + "\n";
             html += '   <div id="mBeaconStateLabel0" class="col col-state-label">SCANNING</div>' + "\n";
             html += '   <div id="mBeaconIdentifier0" class="col col-state-identifier">' + monitorBeacons[i].identifier + '</div>' + "\n";        
             html += '</div>' + "\n";
@@ -141,7 +141,7 @@
             //update visuals for monitored iBeacon
             for(i=0; i<monitorBeacons.length; i++) {
             	if(pluginResult.region.uuid == monitorBeacons[i].uuid && pluginResult.region.major == monitorBeacons[i].major && pluginResult.region.minor == monitorBeacons[i].minor) {
-            		//set status label values
+            		//set state label values
             		if(pluginResult.state == "CLRegionStateInside") {
             			state = 'inside';
             		} else {
