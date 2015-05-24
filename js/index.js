@@ -266,6 +266,7 @@ BeaconMonitor.prototype.startRangingBeacons = function() {
 };
 
 //deviceready event handler
+/*
 BeaconMonitor.prototype.onDeviceReady = function() {
     try {
         //range
@@ -323,6 +324,7 @@ BeaconMonitor.prototype.onDeviceReady = function() {
         
     
 };
+*/
 
 //get the show started when the device is ready
 document.addEventListener('deviceready', function() { 
