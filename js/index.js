@@ -291,4 +291,5 @@ BeaconMonitor.onDeviceReady = function() {
 };
 
 //get the show started when the device is ready
-document.addEventListener('deviceready', BeaconMonitor.onDeviceReady, false);
+var bMonitor = new BeaconMonitor();
+document.addEventListener('deviceready', bMonitor.onDeviceReady, false);
