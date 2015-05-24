@@ -273,8 +273,8 @@ BeaconMonitor.prototype.onDeviceReady = function() {
         this.startRangingBeacons();
 
         //init range signal strength graph
-        this.signalGraph = new SignalGraph();
-        this.signalGraph.init(this.rangeBeacons.length);
+        //this.signalGraph = new SignalGraph();
+        //this.signalGraph.init(this.rangeBeacons.length);
 
         //monitor
         this.createMonitorListMarkup();
