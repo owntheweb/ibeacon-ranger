@@ -288,6 +288,12 @@
     //deviceready event handler
     var onDeviceReady = function() {
         try {
+            createRangeListMarkup();
+            startRangingBeacons();
+
+            createMonitorListMarkup();
+            startMonitoringBeacons();
+
             //manage iBeacon monitoring/ranging events
             var delegate = setDeligate();
             cordova.plugins.locationManager.setDelegate(delegate);
@@ -298,16 +304,9 @@
 	        //things we are tracking them in their sleep...
 	        
 	        //if monitoring only when app is active
-	        //cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
+	        cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
 	        //OR if monitoring all the time:
-	        cordova.plugins.locationManager.requestAlwaysAuthorization();
-
-
-            createRangeListMarkup();
-            startRangingBeacons();
-
-            createMonitorListMarkup();
-            startMonitoringBeacons();
+	        //cordova.plugins.locationManager.requestAlwaysAuthorization();
         
         } catch(err) {
             alert(err);
