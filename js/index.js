@@ -70,13 +70,13 @@ function BeaconMonitor() {
 }
 
 //log messages to the app screen, mostly for testing
-BeaconMonitor.logToDom = function(message) {
+BeaconMonitor.prototype.logToDom = function(message) {
     document.getElementById('domLog').innerHTML = message; //pretty dom huh? Need to explore a console-like solution
 };
 
 //create markup for range list
 //!!! I know! markup mixed in with logic.... I know! I know...
-BeaconMonitor.createRangeListMarkup = function() {
+BeaconMonitor.prototype.createRangeListMarkup = function() {
     var i, html, elem;
     var html = '';
     for(i=0; i<this.rangeBeacons.length; i++) {
@@ -97,7 +97,7 @@ BeaconMonitor.createRangeListMarkup = function() {
 };
 
 //create markup for monitor list
-BeaconMonitor.createMonitorListMarkup = function() {
+BeaconMonitor.prototype.createMonitorListMarkup = function() {
     var i, html, elem;
     var html = '';
     for(i=0; i<this.monitorBeacons.length; i++) {
@@ -115,7 +115,7 @@ BeaconMonitor.createMonitorListMarkup = function() {
 };
 
 //handle location manager events for an iBeacon when monitoring distance from iBeacon
-BeaconMonitor.setDeligate = function() {
+BeaconMonitor.prototype.setDeligate = function() {
     var delegate = new cordova.plugins.locationManager.Delegate();
 
     //talked about as "monitoring"
@@ -204,7 +204,7 @@ BeaconMonitor.setDeligate = function() {
 
 //mark the closest iBeacon with a star
 //great when thinking about when to trigger content for the closest iBeacon
-BeaconMonitor.starClosestBeacon = function() {
+BeaconMonitor.prototype.starClosestBeacon = function() {
 	var i;
 	var closest = {uuid:'none', rssi:-999}; //none to be found to start
 	for(i=0; i<this.rangeBeacons.length; i++) {
@@ -228,7 +228,7 @@ BeaconMonitor.starClosestBeacon = function() {
 };
 
 // Start monitoring if within proximity of iBeacons (with app running or not!)
-BeaconMonitor.startMonitoringBeacons = function() {
+BeaconMonitor.prototype.startMonitoringBeacons = function() {
     var i;
 
     for(i=0; i<this.monitorBeacons.length; i++) {
@@ -246,7 +246,7 @@ BeaconMonitor.startMonitoringBeacons = function() {
 };
 
 // Start monitoring iBeacon ranges
-BeaconMonitor.startRangingBeacons = function() {
+BeaconMonitor.prototype.startRangingBeacons = function() {
     var i;
 
     for(i=0; i<this.rangeBeacons.length; i++) {
@@ -266,15 +266,15 @@ BeaconMonitor.startRangingBeacons = function() {
 };
 
 //deviceready event handler
-BeaconMonitor.onDeviceReady = function() {
+BeaconMonitor.prototype.onDeviceReady = function() {
     try {
         //range
         this.createRangeListMarkup();
         this.startRangingBeacons();
 
         //init range signal strength graph
-        //this.signalGraph = new SignalGraph();
-        //this.signalGraph.init(this.rangeBeacons.length);
+        this.signalGraph = new SignalGraph();
+        this.signalGraph.init(this.rangeBeacons.length);
 
         //monitor
         this.createMonitorListMarkup();

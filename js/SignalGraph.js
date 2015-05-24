@@ -32,7 +32,7 @@ function SignalGraph() {
 }
 
 //draw the graph on canvas
-SignalGraph.drawGraph = function() {
+SignalGraph.prototype.drawGraph = function() {
 	var i, n, y, length;
 	this.context.clearRect(0, 0, this.width, this.height);
 
@@ -68,11 +68,11 @@ SignalGraph.drawGraph = function() {
 };
 
 //clear out old data that scrolled past longest width/height
-SignalGraph.trimData = function() {
+SignalGraph.prototype.trimData = function() {
 	//!!! do something
 };
 
-SignalGraph.appendRangeData = function(rssi, accuracy, beaconIndex) {
+SignalGraph.prototype.appendRangeData = function(rssi, accuracy, beaconIndex) {
 
 	this.ranges[beaconIndex].append({rssi:rssi, acc:accuracy});
 	
@@ -81,14 +81,14 @@ SignalGraph.appendRangeData = function(rssi, accuracy, beaconIndex) {
 }
 
 //size graph to window width
-SignalGraph.sizeGraph = function() {
+SignalGraph.prototype.sizeGraph = function() {
 	this.width = window.innerWidth;
 
 	this.context.canvas.width = this.width;
 	this.context.canvas.height = this.height;
 };
 
-SignalGraph.init = function(beaconCount) {
+SignalGraph.prototype.init = function(beaconCount) {
 	var i;
 	
 	//add beadon data placeholders
