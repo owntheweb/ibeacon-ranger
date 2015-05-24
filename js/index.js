@@ -45,37 +45,25 @@
             identifier:'LightBlue1',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
-            minor:1,
-            rssi:-999,
-            prox:'unknown',
-            closest: false
+            minor:1
         },
         {
             identifier:'ib2',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
-            minor:2,
-            rssi:-999,
-            prox:'unknown',
-            closest: false
+            minor:2
         },
         {
             identifier:'ib3',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
-            minor:3,
-            rssi:-999,
-            prox:'unknown',
-            closest: false
+            minor:3
         },
         {
             identifier:'ib4',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
-            minor:4,
-            rssi:-999,
-            prox:'unknown',
-            closest: false
+            minor:4
         },
     ];
 
@@ -203,11 +191,6 @@
         //!!! might be nice to show a message about the "this app wishes to monitor you location"
         //explaining what how iBeacons will be used to enrich the experience before the user
         //things we are tracking them in their sleep...
-        
-        //if monitoring only when app is active
-        //cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
-        //OR if monitoring all the time:
-        //cordova.plugins.locationManager.requestAlwaysAuthorization();
 
         //!!!
         //required if using monitoring??
@@ -266,8 +249,10 @@
         var i;
 
         for(i=0; i<rangeBeacons.length; i++) {
-            //set i for display update purposes for now (instead of "redrawing" everything for now)
-            rangeBeacons[i].i = i;
+            rangeBeacons[i].i = i; //set i for display update purposes for now (instead of "redrawing" everything for now)
+            rangeBeacons[i].rssi = -999; //start with an impossibly low signal strength when starting to detect closest beacons later
+            rangeBeacons[i].prox = 'unknown'; //we don't know proximity yet until it is measured
+            rangeBeacons[i].closest = false; //closest beacon gets a star
 
             //set iBeacon's region
             rangeBeacons[i].region = new cordova.plugins.locationManager.BeaconRegion(rangeBeacons[i].identifier, rangeBeacons[i].uuid, rangeBeacons[i].major, rangeBeacons[i].minor);
