@@ -325,4 +325,23 @@ BeaconMonitor.prototype.onDeviceReady = function() {
 };
 
 //get the show started when the device is ready
-document.addEventListener('deviceready', function() { var bMonitor = new BeaconMonitor(); bMonitor.onDeviceReady(); }, false);
+document.addEventListener('deviceready', function() { 
+	var bMonitor = new BeaconMonitor(); 
+
+	//range
+	bMonitor.createRangeListMarkup();
+	bMonitor.startRangingBeacons();
+
+	//init range signal strength graph
+    //this.signalGraph = new SignalGraph();
+    //this.signalGraph.init(this.rangeBeacons.length);
+
+    //monitor
+    bMonitor.createMonitorListMarkup();
+	bMonitor.startMonitoringBeacons();
+
+	//manage iBeacon monitoring/ranging events
+    bMonitor.setDeligate();
+	
+
+}, false);
