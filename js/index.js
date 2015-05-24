@@ -154,12 +154,20 @@
             	}
             }
             */
-            logToDom('didDetermineStateForRegion');
+            //logToDom('didDetermineStateForRegion');
             logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             //cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
             //    + JSON.stringify(pluginResult));
         };
+
+        delegate.didExitRegion = function(pluginResult) {
+        	 logToDom('[DOM] didExitRegion: ' + JSON.stringify(pluginResult));
+        }
+
+        delegate.didEnterRegion = function(pluginResult) {
+        	 logToDom('[DOM] didEnterRegion: ' + JSON.stringify(pluginResult));
+        }
 
         /*
         delegate.didStartMonitoringForRegion = function (pluginResult) {
@@ -214,8 +222,6 @@
             //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
-        startMonitoringBeacons();
-
         cordova.plugins.locationManager.setDelegate(delegate);
 
         // required in iOS 8+
@@ -224,9 +230,14 @@
         //things we are tracking them in their sleep...
         
         //if monitoring only when app is active
-        cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
+        //cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
         //OR if monitoring all the time:
         //cordova.plugins.locationManager.requestAlwaysAuthorization();
+
+        //!!!
+        //required if using monitoring??
+        //https://github.com/petermetz/cordova-plugin-ibeacon/issues/98
+        cordova.plugins.locationManager.requestAlwaysAuthorization();
     };
 
 	//mark the closest iBeacon with a star
@@ -300,11 +311,11 @@
     //deviceready event handler
     var onDeviceReady = function() {
         try {
-            //createRangeListMarkup();
-            //startRangingBeacons();
+            createRangeListMarkup();
+            startRangingBeacons();
 
-            //createMonitorListMarkup();
-            //startMonitoringBeacons();
+            createMonitorListMarkup();
+            startMonitoringBeacons();
 
             //manage iBeacon monitoring/ranging events
             setDeligate();
