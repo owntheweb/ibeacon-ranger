@@ -155,7 +155,7 @@
             }
             */
             //logToDom('didDetermineStateForRegion');
-            logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            //logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             //cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
             //    + JSON.stringify(pluginResult));
@@ -237,6 +237,7 @@
         //!!!
         //required if using monitoring??
         //https://github.com/petermetz/cordova-plugin-ibeacon/issues/98
+        //also had to UNINSTALL, reinstall on iOS to see changes
         cordova.plugins.locationManager.requestAlwaysAuthorization();
     };
 
