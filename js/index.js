@@ -270,26 +270,59 @@ BeaconMonitor.prototype.onDeviceReady = function() {
     try {
         //range
         this.createRangeListMarkup();
-        this.startRangingBeacons();
-
-        //init range signal strength graph
-        //this.signalGraph = new SignalGraph();
-        //this.signalGraph.init(this.rangeBeacons.length);
-
-        //monitor
-        this.createMonitorListMarkup();
-        this.startMonitoringBeacons();
-
-        //manage iBeacon monitoring/ranging events
-        this.setDeligate();
-    
     } catch(err) {
         alert(err);
-        logToDom(err.message);
+        this.logToDom(err.message);
     }
+
+    try {
+        this.startRangingBeacons();
+    } catch(err) {
+        alert(err);
+        this.logToDom(err.message);
+    }
+
+    try {
+        //init range signal strength graph
+        this.signalGraph = new SignalGraph();
+    } catch(err) {
+        alert(err);
+        this.logToDom(err.message);
+    }
+
+    try {
+        this.signalGraph.init(this.rangeBeacons.length);
+    } catch(err) {
+        alert(err);
+        this.logToDom(err.message);
+    }
+
+    try {
+        //monitor
+        this.createMonitorListMarkup();
+    } catch(err) {
+        alert(err);
+        this.logToDom(err.message);
+    }
+
+    try {
+        this.startMonitoringBeacons();
+    } catch(err) {
+        alert(err);
+        this.logToDom(err.message);
+    }
+
+    try {
+        //manage iBeacon monitoring/ranging events
+        this.setDeligate();
+    } catch(err) {
+        alert(err);
+        this.logToDom(err.message);
+    }        
+
+        
     
 };
 
 //get the show started when the device is ready
-var bMonitor = new BeaconMonitor();
-document.addEventListener('deviceready', bMonitor.onDeviceReady, false);
+document.addEventListener('deviceready', function() { var bMonitor = new BeaconMonitor(); bMonitor.onDeviceReady(); }, false);
