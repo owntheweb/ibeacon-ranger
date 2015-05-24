@@ -66,6 +66,22 @@
         },
     ];
 
+    //create colors used as a key for RSSI strength graph and graph line colors
+    //!!! may want to make this list longer in case monitoring more iBeacons
+    //!!! currently this only affects lines, need to write css dynamically to replace need for existing CSS?
+    rangeColors = [
+    	'#ff0000',
+    	'#ffff00',
+    	'#26ff00',
+    	'#00ffff',
+    	'#001fff',
+    	'#ff00ff',
+    	'#ff7f00',
+    	'#7dff00',
+    	'#a700ff',
+    	'#cccccc'
+    ];
+
     //log messages to the app screen, mostly for testing
     var logToDom = function(message) {
         document.getElementById('domLog').innerHTML = message; //pretty dom huh? Need to explore a console-like solution
@@ -94,7 +110,6 @@
     };
 
     //create markup for monitor list
-    //!!! I know! markup mixed in with logic.... I know! I know...
     var createMonitorListMarkup = function() {
         var i, html, elem;
         var html = '';
