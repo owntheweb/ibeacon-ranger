@@ -66,21 +66,7 @@ function BeaconMonitor() {
         },
     ];
 
-    //create colors used as a key for RSSI strength graph and graph line colors
-    //!!! may want to make this list longer in case monitoring more iBeacons
-    //!!! currently this only affects lines, need to write css dynamically to replace need for existing CSS?
-    this.rangeColors = [
-    	'#ff0000',
-    	'#ffff00',
-    	'#26ff00',
-    	'#00ffff',
-    	'#001fff',
-    	'#ff00ff',
-    	'#ff7f00',
-    	'#7dff00',
-    	'#a700ff',
-    	'#cccccc'
-    ];
+
 }
 
 //log messages to the app screen, mostly for testing
@@ -190,6 +176,9 @@ BeaconMonitor.setDeligate = function() {
         		//star closest iBeacon
         		this.starClosestBeacon();
 
+        		//update graph with new data
+        		this.signalGraph.appendRangeData(rssi, accuracy, beaconIndex);
+
         		//logToDom('[DOM] beaconRegion: ' + JSON.stringify(rangeBeacons[i].region));
 
         		break;
@@ -279,9 +268,15 @@ BeaconMonitor.startRangingBeacons = function() {
 //deviceready event handler
 BeaconMonitor.onDeviceReady = function() {
     try {
+        //range
         this.createRangeListMarkup();
         this.startRangingBeacons();
 
+        //init range signal strength graph
+        this.signalGraph = new SignalGraph();
+        this.signalGraph.init(this.rangeBeacons.length);
+
+        //monitor
         this.createMonitorListMarkup();
         this.startMonitoringBeacons();
 
