@@ -4,6 +4,9 @@
     //by Apple), even when app is not running. This is ideal
     //for larger areas, like entering a museum or navigating
     //between multiple buildings or very, very large rooms
+    //note: requires ...requestAlwaysAuthorization() to work,
+    //which could annoy user when app is ALWAYS monitoring
+    //even when app is not active 
 	var monitorBeacons = [
         {
             identifier:'ib1',
@@ -34,12 +37,8 @@
     //When app is active, track the distance from iBeacons,
     //activating content for the closest iBeacon.
     //Range as many iBeacons at a time as you like, but no
-    //more than 4,294,836,225 at a time.
-    //??? Would you only want to range a set of iBeacons
-    //if within a certain area(s) triggered by the iBeacons
-    //being monitored (proximity)?
-    //??? What is the energy requirments for ranging a bajilion
-    //iBeacons?
+    //more than 4,294,836,225 at a time. xD
+    //??? What is the energy requirments for ranging a bajilion iBeacons?
     var rangeBeacons = [
         {
             identifier:'LightBlue1',
@@ -67,10 +66,9 @@
         },
     ];
 
-    //test function
+    //log messages to the app screen, mostly for testing
     var logToDom = function(message) {
-        var elem = document.getElementById('domLog'); //pretty dom huh? Need to explore a console-like solution
-            elem.innerHTML = message;
+        document.getElementById('domLog').innerHTML = message; //pretty dom huh? Need to explore a console-like solution
     };
 
     //create markup for range list
@@ -120,7 +118,7 @@
 
         //talked about as "monitoring"
         delegate.didDetermineStateForRegion = function (pluginResult) {
-        	//var state;
+        	var state;
             
             //update visuals for monitored iBeacon
             for(i=0; i<monitorBeacons.length; i++) {
@@ -262,11 +260,6 @@
                 .fail(console.error)
                 .done();
         }
-    };
-
-    // Application Constructor
-    var initialize = function() {
-        bindEvents();
     };
 
     //deviceready event handler
