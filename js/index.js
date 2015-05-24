@@ -41,7 +41,7 @@
     //??? What is the energy requirments for ranging a bajilion iBeacons?
     var rangeBeacons = [
         {
-            identifier:'LightBlue1',
+            identifier:'ib1',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:1
@@ -157,7 +157,6 @@
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
             var prox;
 
-            /*
             //update visuals for ranged iBeacon
             for(i=0; i<rangeBeacons.length; i++) {
             	if(pluginResult.region.uuid == rangeBeacons[i].uuid && pluginResult.region.major == rangeBeacons[i].major && pluginResult.region.minor == rangeBeacons[i].minor) {
@@ -195,9 +194,8 @@
             		break;
             	}
             }
-            */
 
-            logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+            //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
         cordova.plugins.locationManager.setDelegate(delegate);
@@ -263,7 +261,6 @@
     var startRangingBeacons = function() {
         var i;
 
-        /*
         for(i=0; i<rangeBeacons.length; i++) {
             rangeBeacons[i].i = i; //set i for display update purposes for now (instead of "redrawing" everything for now)
             rangeBeacons[i].rssi = -999; //start with an impossibly low signal strength when starting to detect closest beacons later
@@ -278,15 +275,6 @@
                 .fail(console.error)
                 .done();
         }
-        */
-
-        //!!! TEST
-        //try scanning for all iBeacons in range
-        var region = new cordova.plugins.locationManager.BeaconRegion();
-
-        logToDom('Test: Can I add all iBeacons to a region?');
-
-        //!!! END TeSt
     };
 
     //deviceready event handler
