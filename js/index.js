@@ -214,7 +214,17 @@
             //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
 
-        return delegate;
+        cordova.plugins.locationManager.setDelegate(delegate);
+
+        // required in iOS 8+
+        //!!! might be nice to show a message about the "this app wishes to monitor you location"
+        //explaining what how iBeacons will be used to enrich the experience before the user
+        //things we are tracking them in their sleep...
+        
+        //if monitoring only when app is active
+        cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
+        //OR if monitoring all the time:
+        //cordova.plugins.locationManager.requestAlwaysAuthorization();
     };
 
 	//mark the closest iBeacon with a star
@@ -295,18 +305,7 @@
             startMonitoringBeacons();
 
             //manage iBeacon monitoring/ranging events
-            var delegate = setDeligate();
-            cordova.plugins.locationManager.setDelegate(delegate);
-
-            // required in iOS 8+
-	        //!!! might be nice to show a message about the "this app wishes to monitor you location"
-	        //explaining what how iBeacons will be used to enrich the experience before the user
-	        //things we are tracking them in their sleep...
-	        
-	        //if monitoring only when app is active
-	        cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
-	        //OR if monitoring all the time:
-	        //cordova.plugins.locationManager.requestAlwaysAuthorization();
+            setDeligate();
         
         } catch(err) {
             alert(err);
