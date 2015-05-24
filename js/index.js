@@ -298,16 +298,16 @@
 	        //things we are tracking them in their sleep...
 	        
 	        //if monitoring only when app is active
-	        cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
+	        //cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
 	        //OR if monitoring all the time:
-	        //cordova.plugins.locationManager.requestAlwaysAuthorization();
+	        cordova.plugins.locationManager.requestAlwaysAuthorization();
 
 
             createRangeListMarkup();
             startRangingBeacons();
 
-            //createMonitorListMarkup();
-            //startMonitoringBeacons();
+            createMonitorListMarkup();
+            startMonitoringBeacons();
         
         } catch(err) {
             alert(err);
