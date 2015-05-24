@@ -154,7 +154,7 @@
             	}
             }
             */
-
+            logToDom('didDetermineStateForRegion');
             logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
 
             //cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
@@ -213,6 +213,8 @@
 
             //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
         };
+
+        startMonitoringBeacons();
 
         cordova.plugins.locationManager.setDelegate(delegate);
 
@@ -298,11 +300,11 @@
     //deviceready event handler
     var onDeviceReady = function() {
         try {
-            createRangeListMarkup();
-            startRangingBeacons();
+            //createRangeListMarkup();
+            //startRangingBeacons();
 
-            createMonitorListMarkup();
-            startMonitoringBeacons();
+            //createMonitorListMarkup();
+            //startMonitoringBeacons();
 
             //manage iBeacon monitoring/ranging events
             setDeligate();
