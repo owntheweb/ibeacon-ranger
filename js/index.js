@@ -149,7 +149,7 @@
             		}
 
             		document.getElementById('mBeaconStateLabel' + monitorBeacons[i].i).innerHTML = state.toUpperCase();
-            		document.getElementById('mBeaconState' + monitorBeacons[i].i).className = "col col-state state-" + prox;
+            		document.getElementById('mBeaconState' + monitorBeacons[i].i).className = "col col-state state-" + state;
             	}
             }
             logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
