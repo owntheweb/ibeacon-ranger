@@ -139,7 +139,6 @@
         	//var state;
             
             //update visuals for monitored iBeacon
-            /*
             for(i=0; i<monitorBeacons.length; i++) {
             	if(pluginResult.region.uuid == monitorBeacons[i].uuid && pluginResult.region.major == monitorBeacons[i].major && pluginResult.region.minor == monitorBeacons[i].minor) {
             		//set state label values
@@ -153,21 +152,8 @@
             		document.getElementById('mBeaconState' + monitorBeacons[i].i).className = "col col-state state-" + prox;
             	}
             }
-            */
-            //logToDom('didDetermineStateForRegion');
-            //logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
-
-            //cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
-            //    + JSON.stringify(pluginResult));
+            logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
         };
-
-        delegate.didExitRegion = function(pluginResult) {
-        	 logToDom('[DOM] didExitRegion: ' + JSON.stringify(pluginResult));
-        }
-
-        delegate.didEnterRegion = function(pluginResult) {
-        	 logToDom('[DOM] didEnterRegion: ' + JSON.stringify(pluginResult));
-        }
 
         /*
         delegate.didStartMonitoringForRegion = function (pluginResult) {
