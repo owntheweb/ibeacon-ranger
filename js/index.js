@@ -10,8 +10,7 @@
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:1
-        }
-        /*,
+        },
         {
             identifier:'ib2',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
@@ -29,8 +28,7 @@
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
             major:1,
             minor:4
-        },
-        */
+        }
     ];
 
     //When app is active, track the distance from iBeacons,
@@ -43,7 +41,6 @@
     //??? What is the energy requirments for ranging a bajilion
     //iBeacons?
     var rangeBeacons = [
-        /*
         {
             identifier:'LightBlue1',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
@@ -53,7 +50,6 @@
             prox:'unknown',
             closest: false
         },
-        */
         {
             identifier:'ib2',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
