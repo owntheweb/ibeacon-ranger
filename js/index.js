@@ -145,19 +145,12 @@
             		}
 
             		document.getElementById('mBeaconStateLabel' + monitorBeacons[i].i).innerHTML = state.toUpperCase();
+            		document.getElementById('mBeaconColor' + monitorBeacons[i].i).className = "col col-color color-" + state;
             		document.getElementById('mBeaconState' + monitorBeacons[i].i).className = "col col-state state-" + state;
             	}
             }
-            logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+            //logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
         };
-
-        /*
-        delegate.didStartMonitoringForRegion = function (pluginResult) {
-            //console.log('didStartMonitoringForRegion:', pluginResult);
-
-            logToDom('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
-        };
-        */
 
         //talked about as "ranging"
         delegate.didRangeBeaconsInRegion = function (pluginResult) {
