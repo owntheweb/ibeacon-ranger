@@ -19,8 +19,8 @@ function SignalGraph() {
     
     //higher the number, stroger the signal
     //e.g. -30 is higher than -90
-    this.minRSSI = 0; //observed about -10, start with 0 for now for easy math
-    this.maxRSSI = -100; //observed about -90, start with -100 now for easy math
+    this.maxRSSI = -10; //observed about -10, no more, start from here
+    this.minRSSI = -90; //observed about -90, no less, start from here
 
     this.canvas = document.getElementById("signalGraph");
 	this.context = this.canvas.getContext('2d');
@@ -44,11 +44,10 @@ SignalGraph.prototype.drawGraph = function() {
 	for(i=0; i<this.ranges.length; i++) {
 		for(n=0; n<this.ranges[i].length; n++) {
 			if(this.ranges[i][n].rssi == 0) {
-				this.ranges[i][n].rssi = this.maxRSSI;
+				this.ranges[i][n].rssi = this.minRSSI;
 			}
 
-			y = (this.ranges[i][n].rssi - this.minRSSI) / this.maxRSSI * this.height;
-			//this.logToDom(y);
+			y = (this.ranges[i][n].rssi - this.maxRSSI) / this.minRSSI * this.height;
 
 			if(n == 0) {
 				this.context.beginPath();
