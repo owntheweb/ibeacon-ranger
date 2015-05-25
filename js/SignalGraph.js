@@ -70,11 +70,13 @@ SignalGraph.prototype.trimData = function(beaconIndex) {
 	
 	//draw out to the longest dimension in case of orientation change
 	var width = this.width;
+	/* //!!! this part causing graph to start off screen for portrait orientation
 	if(this.height > width) {
 		width = this.height;
 	}
+	*/
 
-	if(this.ranges[beaconIndex].length > (width / this.plotXpx)) {
+	while(this.ranges[beaconIndex].length > width / this.plotXpx) {
 		this.ranges[beaconIndex].shift();
 	}
 };
