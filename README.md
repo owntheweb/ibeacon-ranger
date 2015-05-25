@@ -48,8 +48,8 @@ iBeacons are exciting, yet 'simple' low-energy Bluetooth (BLE) devices. They rep
 
 ##Tips for Success
 * It's important to know that this app monitors a specified list of iBeacons. It cannot locate and list all iBeacons in the area.
-* In iOS8, If monitoring iBeacons (inside/outside range, **not** ranging/distance), the app must request to always access location (as it does by default). It won't monitor otherwise. See end of delegate.didRangeBeaconsInRegion in BeaconMonitor.js.
-..* Note: Use this feature with caution as iOS permission makes it read like the app can always access the user's location, gives impression of "constantly track user via GPS" with active location icon always active (alarming).
+* In iOS8, If monitoring iBeacons (inside/outside range, *not* ranging/distance), the app must request to always access location (as it does by default). It won't monitor otherwise. See end of delegate.didRangeBeaconsInRegion in BeaconMonitor.js.
+⋅⋅* Note: Use this feature with caution as iOS permission makes it read like the app can always access the user's location, gives impression of "constantly track user via GPS" with active location icon always active (alarming).
 * If only using ranging features, it will work properly when app requests to only access the user's location when the app is in use. See end of delegate.didRangeBeaconsInRegion in BeaconMonitor.js with a commented out permissions option.
 
 ##Thank You
