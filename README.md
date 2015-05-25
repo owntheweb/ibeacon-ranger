@@ -23,6 +23,7 @@ iBeacons are exciting, yet 'simple' low-energy Bluetooth (BLE) devices. They rep
 
 ##To-do
 * Theoretically this app works on Android, but hasn't been tested there yet (anyone want to give it a shot?).
+* Adapt to self-build on the desktop rather than Adobe PhoneGap Build for those that want it (I found Adobe PhoneGap Build to be handy when not familiar with the build process and also to build an iOS and someday a Windows Phone app from a Linux machine - whoa!).
 * Feature to manually add one's own iBeacons when the app is running (won't help anyone just scanning for my iBeacons!)
 
 ##Wish List
@@ -34,14 +35,21 @@ First, make sure to set iBeacons to monitor in [js/BeaconMonitor.js](https://git
 
 ###Adobe PhoneGap Build Usage
 
-[Finish this...]
+1. Fork this repository. Fork it!
+2. Set iBeacons to monitor in [js/BeaconMonitor.js](https://github.com/owntheweb/ibeacon-ranger/blob/master/js/BeaconMonitor.js)
+3. Visit [Adobe PhoneGap Build](https://build.phonegap.com/) and login.
+4. Add a new app and paste the repository address in the related field. Example: The address for this repository is https://github.com/owntheweb/ibeacon-ranger .
+5. Upload any keys for the desired mobile platform under your project settings.
+6. Choose "Update Code" to pull in the latest committed code from the desired repository. PhoneGap Build will automatically build the app.
+7. Once build is complete, scan the QR code with an authorized mobile device, starting the install process.
+8. Joyfully range and monitor specified iBeacons in the area.
 
 ###PhoneGap Usage
 
-[Finish this...]
+[I need help with this.]
 
 ##Tips for Your Success
-* [Finish this...]
+* [Finish this shortly...]
 
 ##Thank You
 
