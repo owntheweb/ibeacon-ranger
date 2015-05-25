@@ -22,7 +22,7 @@ iBeacons are exciting, yet 'simple' low-energy Bluetooth (BLE) devices. They rep
 * Feature to manually add one's own iBeacons when the app is running (won't help anyone just scanning for my iBeacons!)
 
 ##Wish List
-* Ability to scan ALL nearby iBeacons (currently not supported, see this discussion for details - prove me wrong!)
+* Ability to scan ALL nearby iBeacons (currently not supported, see [this discussion](https://github.com/petermetz/cordova-plugin-ibeacon/issues/49) for details - prove me wrong!)
 
 ##Usage
 
