@@ -1,5 +1,3 @@
-[drafting docs now...]
-
 #iBeacon Ranger
 
 by [Christopher Stevens](http://www.christopherstevens.cc)
@@ -50,7 +48,7 @@ iBeacons are exciting, yet 'simple' low-energy Bluetooth (BLE) devices. They rep
 * It's important to know that this app monitors a specified list of iBeacons. It cannot locate and list all iBeacons in the area.
 * In iOS8, If monitoring iBeacons (inside/outside range, *not* ranging/distance), the app must request to always access location (as it does by default). It won't monitor otherwise. See end of delegate.didRangeBeaconsInRegion in BeaconMonitor.js.
 	* Note: Use this feature with caution as iOS permission makes it read like the app can always access the user's location, gives impression of "constantly track user via GPS" with active location icon always active (alarming).
-* If only using ranging features, it will work properly when app requests to only access the user's location when the app is in use. See end of delegate.didRangeBeaconsInRegion in BeaconMonitor.js with a commented out permissions option.
+* If only using ranging features, it will work properly when app requests to only access the user's location when the app is active. See end of delegate.didRangeBeaconsInRegion in BeaconMonitor.js with a commented out permissions option.
 
 ##Thank You
 
@@ -58,4 +56,4 @@ iBeacons are exciting, yet 'simple' low-energy Bluetooth (BLE) devices. They rep
 
 This app is co-sponsored by the [Space Foundation](http://www.spacefoundation.org).
 
-In addition to personal time spent on this project, extra special thanks goes to the Space Foundation team, supplying iBeacon hardware and even a few on-the-clock training hours to dedicate towards iBeacon research. The Space Foundation is hoping to improve attendee navigational experiences at the annual [Space Symposium](http://www.spacesymposium.org) via a useful app map. We're also exploring options for potential use in the [Space Foundation Discovery Center](http://www.spacefoundation.org/museum). You too can help the Space Foundation achieve their mission to inspire, enable and propel, by contributing to this project. :D
+In addition to personal time spent on this project, extra special thanks goes to the Space Foundation team, supplying iBeacon hardware and even a few on-the-clock training hours to dedicate towards iBeacon research. The Space Foundation is aiming to improve attendee navigational experiences at the annual [Space Symposium](http://www.spacesymposium.org) via a useful app map. We're also exploring options for future use in the [Space Foundation Discovery Center](http://www.spacefoundation.org/museum). You too can help the Space Foundation achieve their mission to inspire, enable and propel, by contributing to this project. :D
