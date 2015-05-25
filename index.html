@@ -59,8 +59,15 @@
             
         </div>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/utils.js"></script>
+        <!--<script type="text/javascript" src="js/utils.js"></script>-->
         <!--<script type="text/javascript" src="js/signalGraph.js"></script>-->
         <script type="text/javascript" src="js/index.js"></script>
+
+        <script>
+        document.addEventListener('deviceready', function() { 
+            var bMonitor = new BeaconMonitor();
+            bMonitor.onDeviceReady(); 
+        } , false);
+        </script>
     </body>
 </html>

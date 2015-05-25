@@ -138,11 +138,13 @@ BeaconMonitor.prototype.setDeligate = function() {
         	}
         }
         //logToDom('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
-    };
+    }.bind(this);
 
     //talked about as "ranging"
     delegate.didRangeBeaconsInRegion = function (pluginResult) {
         var prox;
+
+        //this.logToDom('[DOM] beaconRegion: ' + JSON.stringify(pluginResult));
 
         //update visuals for ranged iBeacon
         for(i=0; i<this.rangeBeacons.length; i++) {
@@ -177,16 +179,14 @@ BeaconMonitor.prototype.setDeligate = function() {
         		this.starClosestBeacon();
 
         		//update graph with new data
-        		this.signalGraph.appendRangeData(rssi, accuracy, beaconIndex);
-
-        		//logToDom('[DOM] beaconRegion: ' + JSON.stringify(rangeBeacons[i].region));
+        		//this.signalGraph.appendRangeData(rssi, accuracy, beaconIndex);
 
         		break;
         	}
         }
 
         //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
-    };
+    }.bind(this);
 
     cordova.plugins.locationManager.setDelegate(delegate);
 
@@ -200,6 +200,8 @@ BeaconMonitor.prototype.setDeligate = function() {
     //https://github.com/petermetz/cordova-plugin-ibeacon/issues/98
     //also had to UNINSTALL, reinstall on iOS to see changes
     cordova.plugins.locationManager.requestAlwaysAuthorization();
+
+    this.logToDom('test 2...');
 };
 
 //mark the closest iBeacon with a star
@@ -284,14 +286,14 @@ BeaconMonitor.prototype.onDeviceReady = function() {
 
     try {
         //init range signal strength graph
-        this.signalGraph = new SignalGraph();
+        //this.signalGraph = new SignalGraph();
     } catch(err) {
         alert(err);
         this.logToDom(err.message);
     }
 
     try {
-        this.signalGraph.init(this.rangeBeacons.length);
+        //this.signalGraph.init(this.rangeBeacons.length);
     } catch(err) {
         alert(err);
         this.logToDom(err.message);
@@ -320,8 +322,6 @@ BeaconMonitor.prototype.onDeviceReady = function() {
         this.logToDom(err.message);
     }        
 
-        
-    
 };
 
 //get the show started when the device is ready
@@ -348,4 +348,3 @@ document.addEventListener('deviceready', function() {
 }, false);
 */
 
-document.addEventListener('deviceready', BeaconMonitor.onDeviceReady, false);
