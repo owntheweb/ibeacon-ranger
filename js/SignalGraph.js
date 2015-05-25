@@ -107,5 +107,5 @@ SignalGraph.prototype.init = function(beaconCount) {
 	this.sizeGraph();
 
 	//size again if orientation changes
-	window.addEventListener('resize', function() { SignalGraph.sizeGraph(); }, false);
+	window.addEventListener('resize', function() { this.sizeGraph(); }.bind(this), false);
 };
