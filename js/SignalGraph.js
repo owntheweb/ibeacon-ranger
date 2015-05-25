@@ -22,7 +22,7 @@ function SignalGraph() {
     this.minRSSI = 0; //observed about -10, start with 0 for now for easy math
     this.maxRSSI = -100; //observed about -90, start with -100 now for easy math
 
-    this.canvas = document.getElementById("signalCanvas");
+    this.canvas = document.getElementById("signalGraph");
 	this.context = this.canvas.getContext('2d');
 
 	this.width = window.innerWidth;
@@ -31,37 +31,32 @@ function SignalGraph() {
     this.ranges = []; //an array of ranges containing arrays of RSSI readings
 }
 
+//log messages to the app screen, mostly for testing
+SignalGraph.prototype.logToDom = function(message) {
+    document.getElementById('domLog').innerHTML = message; //pretty dom huh? Need to explore a console-like solution
+};
+
 //draw the graph on canvas
 SignalGraph.prototype.drawGraph = function() {
 	var i, n, y, length;
 	this.context.clearRect(0, 0, this.width, this.height);
-
-	//get longest dataset length
-	/*
-	length = 0;
-	for(i=0; i<this.ranges.length) {
-		if(this.ranges[i].length > length) {
-			length = this.ranges[i].length;
-		}
-	}
-	*/
-
 	
 	for(i=0; i<this.ranges.length; i++) {
 		for(n=0; n<this.ranges[i].length; n++) {
-			y = (this.ranges[i][n] - this.minRSSI) / this.maxRSSI * this.height;
+			y = (this.ranges[i][n].rssi - this.minRSSI) / this.maxRSSI * this.height;
+			this.logToDom(y);
 
 			if(n == 0) {
 				this.context.beginPath();
-				this.lineWidth = 2;
-				this.lineStyle = this.rangeColors[i];
-				this.context.context.moveTo(n * this.plotXpx, y);
+				this.context.lineWidth = 2;
+				this.context.lineStyle = this.rangeColors[i];
+				this.context.moveTo(n * this.plotXpx, y);
 			} else {
-				this.context.context.lineTo(n * this.plotXpx, y);
+				this.context.lineTo(n * this.plotXpx, y);
 			}
 
 			if(n == this.ranges[i].length - 1) {
-				context.stroke();
+				this.context.stroke();
 			}
 		}
 	}
@@ -72,9 +67,9 @@ SignalGraph.prototype.trimData = function() {
 	//!!! do something
 };
 
-SignalGraph.prototype.appendRangeData = function(rssi, accuracy, beaconIndex) {
+SignalGraph.prototype.pushRangeData = function(rssi, accuracy, beaconIndex) {
 
-	this.ranges[beaconIndex].append({rssi:rssi, acc:accuracy});
+	this.ranges[beaconIndex].push({rssi:rssi, acc:accuracy});
 	
 	this.trimData();
 	this.drawGraph();

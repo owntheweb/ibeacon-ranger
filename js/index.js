@@ -179,7 +179,12 @@ BeaconMonitor.prototype.setDeligate = function() {
         		this.starClosestBeacon();
 
         		//update graph with new data
-        		//this.signalGraph.appendRangeData(rssi, accuracy, beaconIndex);
+        		try {
+        			this.logToDom(this.rangeBeacons[i].rssi + " : " + pluginResult.beacons[0].accuracy + " : " + this.rangeBeacons[i].i);
+        			this.signalGraph.pushRangeData(this.rangeBeacons[i].rssi, pluginResult.beacons[0].accuracy, this.rangeBeacons[i].i);
+        		} catch(err) {
+        			this.logToDom(err);
+        		}
 
         		break;
         	}
@@ -200,8 +205,6 @@ BeaconMonitor.prototype.setDeligate = function() {
     //https://github.com/petermetz/cordova-plugin-ibeacon/issues/98
     //also had to UNINSTALL, reinstall on iOS to see changes
     cordova.plugins.locationManager.requestAlwaysAuthorization();
-
-    this.logToDom('test 2...');
 };
 
 //mark the closest iBeacon with a star
@@ -275,8 +278,8 @@ BeaconMonitor.prototype.onDeviceReady = function() {
         this.startRangingBeacons();
 
         //init range signal strength graph
-        //this.signalGraph = new SignalGraph();
-        //this.signalGraph.init(this.rangeBeacons.length);
+        this.signalGraph = new SignalGraph();
+        this.signalGraph.init(this.rangeBeacons.length);
 
         //monitor
         this.createMonitorListMarkup();
