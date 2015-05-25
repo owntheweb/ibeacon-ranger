@@ -65,9 +65,16 @@ SignalGraph.prototype.drawGraph = function() {
 	}
 };
 
-//clear out old data that scrolled past longest width/height
+//clear out old data that scrolled past the screen
 SignalGraph.prototype.trimData = function(beaconIndex) {
-	if(this.ranges[beaconIndex].length > (this.width / this.plotXpx)) {
+	
+	//draw out to the longest dimension in case of orientation change
+	var width = this.width;
+	if(this.height > width) {
+		width = this.height;
+	}
+
+	if(this.ranges[beaconIndex].length > (width / this.plotXpx)) {
 		this.ranges[beaconIndex].shift();
 	}
 };
