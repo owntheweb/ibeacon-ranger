@@ -43,13 +43,17 @@ SignalGraph.prototype.drawGraph = function() {
 	
 	for(i=0; i<this.ranges.length; i++) {
 		for(n=0; n<this.ranges[i].length; n++) {
+			if(this.ranges[i][n].rssi == 0) {
+				this.ranges[i][n].rssi = this.maxRSSI;
+			}
+
 			y = (this.ranges[i][n].rssi - this.minRSSI) / this.maxRSSI * this.height;
-			this.logToDom(y);
+			//this.logToDom(y);
 
 			if(n == 0) {
 				this.context.beginPath();
 				this.context.lineWidth = 2;
-				this.context.lineStyle = this.rangeColors[i];
+				this.context.strokeStyle = this.rangeColors[i];
 				this.context.moveTo(n * this.plotXpx, y);
 			} else {
 				this.context.lineTo(n * this.plotXpx, y);
@@ -63,15 +67,17 @@ SignalGraph.prototype.drawGraph = function() {
 };
 
 //clear out old data that scrolled past longest width/height
-SignalGraph.prototype.trimData = function() {
-	//!!! do something
+SignalGraph.prototype.trimData = function(beaconIndex) {
+	if(this.ranges[beaconIndex].length > (this.width / this.plotXpx)) {
+		this.ranges[beaconIndex].shift();
+	}
 };
 
 SignalGraph.prototype.pushRangeData = function(rssi, accuracy, beaconIndex) {
 
 	this.ranges[beaconIndex].push({rssi:rssi, acc:accuracy});
 	
-	this.trimData();
+	this.trimData(beaconIndex);
 	this.drawGraph();
 }
 

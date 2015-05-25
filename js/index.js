@@ -180,7 +180,7 @@ BeaconMonitor.prototype.setDeligate = function() {
 
         		//update graph with new data
         		try {
-        			this.logToDom(this.rangeBeacons[i].rssi + " : " + pluginResult.beacons[0].accuracy + " : " + this.rangeBeacons[i].i);
+        			//this.logToDom(this.rangeBeacons[i].rssi + " : " + pluginResult.beacons[0].accuracy + " : " + this.rangeBeacons[i].i);
         			this.signalGraph.pushRangeData(this.rangeBeacons[i].rssi, pluginResult.beacons[0].accuracy, this.rangeBeacons[i].i);
         		} catch(err) {
         			this.logToDom(err);
