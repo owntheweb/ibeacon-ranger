@@ -31,8 +31,6 @@ iBeacons are exciting, yet 'simple' low-energy Bluetooth (BLE) devices. They rep
 
 ##Usage
 
-First, make sure to set iBeacons to monitor in [js/BeaconMonitor.js](https://github.com/owntheweb/ibeacon-ranger/blob/master/js/BeaconMonitor.js)
-
 ###Adobe PhoneGap Build Usage
 
 1. Fork this repository. Fork it!
@@ -44,12 +42,15 @@ First, make sure to set iBeacons to monitor in [js/BeaconMonitor.js](https://git
 7. Once build is complete, scan the QR code with an authorized mobile device, starting the install process.
 8. Joyfully range and monitor specified iBeacons in the area.
 
-###PhoneGap Usage
+###PhoneGap Usage (self-build)
 
 [I need help with this.]
 
-##Tips for Your Success
-* [Finish this shortly...]
+##Tips for Success
+* It's important to know that this app monitors a specified list of iBeacons. It cannot locate and list all iBeacons in the area.
+* In iOS8, If monitoring iBeacons (inside/outside range, **not** ranging/distance), the app must request to always access location (as it does by default). It won't monitor otherwise. See end of delegate.didRangeBeaconsInRegion in BeaconMonitor.js.
+..* Note: Use this feature with caution as iOS permission makes it read like the app can always access the user's location, gives impression of "constantly track user via GPS" with active location icon always active (alarming).
+* If only using ranging features, it will work properly when app requests to only access the user's location when the app is in use. See end of delegate.didRangeBeaconsInRegion in BeaconMonitor.js with a commented out permissions option.
 
 ##Thank You
 

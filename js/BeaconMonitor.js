@@ -223,6 +223,8 @@ BeaconMonitor.prototype.setDeligate = function() {
     //https://github.com/petermetz/cordova-plugin-ibeacon/issues/98
     //also had to UNINSTALL, reinstall on iOS to see changes
     cordova.plugins.locationManager.requestAlwaysAuthorization();
+    //if not monitoring, but ranging only when app is in use, use this line instead:
+    //cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
 };
 
 //mark the closest iBeacon with a star
