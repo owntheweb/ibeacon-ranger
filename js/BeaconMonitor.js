@@ -104,9 +104,9 @@ BeaconMonitor.prototype.createRangeListMarkup = function() {
         html += '   <div id="rBeaconColor' + i + '" class="col col-color color-' + i + '"></div>' + "\n";
         html += '   <div id="rBeaconStar' + i + '" class="col col-star star-not"></div>' + "\n";
         html += '   <div id="rBeaconRange' + i + '" class="col col-range range-unknown"></div>' + "\n";
-        html += '   <div id="rBeaconRangeLabel' + i + '" class="col col-range-label">SCANNING</div>' + "\n";
+        html += '   <div id="rBeaconRangeLabel' + i + '" class="col col-range-label">UNKNOWN</div>' + "\n";
         html += '   <div id="rBeaconIdentifyer' + i + '" class="col col-identifier">' + this.rangeBeacons[i].identifier + '</div>' + "\n";
-        html += '   <div id="rBeaconRSSI' + i + '" class="col col-rssi">----</div>' + "\n";         
+        html += '   <div id="rBeaconRSSI' + i + '" class="col col-rssi">0</div>' + "\n";         
         html += '</div>' + "\n";
     }
 
@@ -123,7 +123,7 @@ BeaconMonitor.prototype.createMonitorListMarkup = function() {
         html += '<div class="row">' + "\n";
         html += '   <div id="mBeaconColor' + i + '" class="col col-color color-outside"></div>' + "\n";
         html += '   <div id="mBeaconState' + i + '" class="col col-state state-outside"></div>' + "\n";
-        html += '   <div id="mBeaconStateLabel' + i + '" class="col col-state-label">SCANNING</div>' + "\n";
+        html += '   <div id="mBeaconStateLabel' + i + '" class="col col-state-label">OUTSIDE</div>' + "\n";
         html += '   <div id="mBeaconIdentifier' + i + '" class="col col-state-identifier">' + this.monitorBeacons[i].identifier + '</div>' + "\n";        
         html += '</div>' + "\n";
     }

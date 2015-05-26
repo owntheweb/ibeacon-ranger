@@ -46,6 +46,7 @@ function SignalGraph() {
 	this.width = window.innerWidth;
     this.height = 150;
 
+    this.curRanges = []; //update current ranges with scan events, update ranges in a time interval to better handle disconnects 
     this.ranges = []; //an array of ranges containing arrays of RSSI readings
 }
 
@@ -100,10 +101,18 @@ SignalGraph.prototype.trimData = function(beaconIndex) {
 };
 
 SignalGraph.prototype.pushRangeData = function(rssi, accuracy, beaconIndex) {
+	this.curRanges[beaconIndex] = {rssi:rssi, acc:accuracy};
+}
 
-	this.ranges[beaconIndex].push({rssi:rssi, acc:accuracy});
-	
-	this.trimData(beaconIndex);
+//update graph data once per second (about rate of individual iBeacon udpates)
+SignalGraph.prototype.addToGraph = function() {
+	var i;
+
+	for(i=0; i<this.curRanges.length; i++) {
+		this.ranges[i].push({rssi:this.curRanges[i].rssi, acc:this.curRanges[i].accuracy});
+		this.trimData(i);
+	}
+
 	this.drawGraph();
 }
 
@@ -120,7 +129,8 @@ SignalGraph.prototype.init = function(beaconCount) {
 	
 	//add beadon data placeholders
 	for(i=0; i<beaconCount; i++) {
-		this.ranges.push([]);
+		this.curRanges.push({rssi:0, acc:0.0});
+		this.ranges.push([[{rssi:0, acc:0.0}]]);
 	}
 
 	//set initial size of graph
@@ -128,4 +138,7 @@ SignalGraph.prototype.init = function(beaconCount) {
 
 	//size again if orientation changes
 	window.addEventListener('resize', function() { this.sizeGraph(); }.bind(this), false);
+
+	//start graph updates
+	setInterval(function(){ this.addToGraph(); }.bind(this), 1000);
 };
