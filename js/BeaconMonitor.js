@@ -58,6 +58,7 @@ function BeaconMonitor() {
     //more than 4,294,836,225 at a time. xD
     //??? What is the energy requirments for ranging a bajilion iBeacons?
     this.rangeBeacons = [
+        /*
         {
             identifier:'ib1',
             uuid:'A495FF99-C5B1-4B44-B512-1370F02D74DE',
@@ -82,6 +83,7 @@ function BeaconMonitor() {
             major:1,
             minor:4
         },
+        */
         {
             identifier:'onyx1',
             uuid:'20CAE8A0-A9CF-11E3-A5E2-0800200C9A66',
@@ -190,6 +192,23 @@ BeaconMonitor.prototype.createMonitorListMarkup = function() {
 
     //place it
     document.getElementById('monitors').innerHTML = html;
+};
+
+//reset readings to min/unknown
+BeaconMonitor.prototype.resetReadings = function() {
+    var i;
+    
+    //range table and graph
+    for(i=0; i<this.rangeBeacons.length; i++) {
+        document.getElementById('rBeaconRSSI' + this.rangeBeacons[i].i).innerHTML = "0";
+        document.getElementById('rBeaconRangeLabel' + this.rangeBeacons[i].i).innerHTML = 'UNKNOWN';
+        document.getElementById('rBeaconRange' + this.rangeBeacons[i].i).className = "col col-range range-unknown";
+        document.getElementById('rBeaconStar' + this.rangeBeacons[i].i).className = "col col-star star-not";
+        this.signalGraph.pushRangeData(this.signalGraph.minRSSI, 0, this.rangeBeacons[i].i);
+    }
+
+    //monitor table
+    //leave it alone: It gets handled properly even if the app isn't running (check to make sure this is factual)
 };
 
 //handle location manager events for an iBeacon when monitoring distance from iBeacon

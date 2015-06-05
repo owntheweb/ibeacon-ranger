@@ -69,7 +69,13 @@
 
             //start monitoring
             var bMonitor = new BeaconMonitor();
-            bMonitor.onDeviceReady(); 
+            bMonitor.onDeviceReady();
+
+            //reset values and displays when resuming app after pausing/using other apps
+            document.addEventListener("resume", function() {
+                bMonitor.resetReadings();
+            }, false);
+
         } , false);
         </script>
     </body>
