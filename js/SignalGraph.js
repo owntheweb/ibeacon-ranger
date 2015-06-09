@@ -44,7 +44,7 @@ function SignalGraph() {
 	this.context = this.canvas.getContext('2d');
 
 	this.width = window.innerWidth;
-    this.height = 150;
+    this.height = 200;
 
     this.curRanges = []; //update current ranges with scan events, update ranges in a time interval to better handle disconnects 
     this.ranges = []; //an array of ranges containing arrays of RSSI readings
