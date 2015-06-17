@@ -39,13 +39,17 @@
   <!--<gap:plugin name="org.apache.cordova.vibration"/>-->
   
   <!-- iBeacon plugin -->
-  <gap:plugin name="com.unarin.cordova.beacon" version="3.2.1" />
+  <gap:plugin name="com.unarin.cordova.beacon" />
   
   <!-- make status bar w/ white text -->
   <gap:plugin name="org.apache.cordova.statusbar" />
   <preference name="StatusBarOverlaysWebView" value="true" />
   <preference name="StatusBarStyle" value="lightcontent" />
   <preference name="StatusBarBackgroundColor" value="#000b1c" />
+
+  <!-- Adndroid API iBeacon support happens starting 4.3, specifying 4.4 below (KitKat is born!) -->
+  <!-- see: http://developer.android.com/guide/topics/manifest/uses-sdk-element.html -->
+  <preference name="android-minSdkVersion" value="18" />
 
   <!-- prevent app from sleeping -->
   <gap:plugin name="nl.x-services.plugins.insomnia" />
