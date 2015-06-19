@@ -17,7 +17,6 @@
   <preference name="show-splash-screen-spinner" value="true"/>
   <preference name="auto-hide-splash-screen" value="true"/>
   <preference name="disable-cursor" value="false"/>
-  <preference name="android-minSdkVersion" value="7"/>
   <preference name="android-installLocation" value="auto"/>
   <!--<gap:plugin name="org.apache.cordova.battery-status"/>-->
   <!--<gap:plugin name="org.apache.cordova.camera"/>-->
@@ -47,7 +46,7 @@
   <preference name="StatusBarStyle" value="lightcontent" />
   <preference name="StatusBarBackgroundColor" value="#000b1c" />
 
-  <!-- Adndroid API iBeacon support happens starting 4.3, specifying 4.4 below (KitKat is born!) -->
+  <!-- Adndroid API iBeacon support happens starting 4.3 -->
   <!-- see: http://developer.android.com/guide/topics/manifest/uses-sdk-element.html -->
   <preference name="android-minSdkVersion" value="18" />
 
