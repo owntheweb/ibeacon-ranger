@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="cc.christopherstevens.myfirstapp" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="cc.christopherstevens.ibeaconranger" version="1.0.0">
   <name>iBeacon Ranger</name>
   <description>iBeacon Ranger is an iBeacon diagnostic tool for iOS and Android built with PhoneGap and Adobe PhoneGap Build.</description>
   <author href="http://www.christopherstevens.cc" email="chris@christopherstevens.cc">Christopher Stevens</author>
