@@ -3,6 +3,7 @@
   <description>iBeacon Ranger is an iBeacon diagnostic tool for iOS and Android built with PhoneGap and Adobe PhoneGap Build.</description>
   <author href="http://www.christopherstevens.cc" email="chris@christopherstevens.cc">Christopher Stevens</author>
   <content src="index.html"/>
+
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
   <preference name="target-device" value="universal"/>
@@ -31,7 +32,7 @@
   <!--<gap:plugin name="org.apache.cordova.file-transfer"/>-->
   <!--<gap:plugin name="org.apache.cordova.geolocation"/>-->
   <!--<gap:plugin name="org.apache.cordova.globalization"/>-->
-  <!--<gap:plugin name="org.apache.cordova.inappbrowser"/>-->
+  <gap:plugin name="org.apache.cordova.inappbrowser"/>
   <!--<gap:plugin name="org.apache.cordova.media"/>-->
   <!--<gap:plugin name="org.apache.cordova.network-information"/>-->
   <gap:plugin name="org.apache.cordova.splashscreen"/>
