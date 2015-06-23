@@ -221,7 +221,7 @@ BeaconMonitor.prototype.setDeligate = function() {
         
         //update visuals for monitored iBeacon
         for(i=0; i<this.monitorBeacons.length; i++) {
-        	if(pluginResult.region.uuid.toLowerCase() == this.monitorBeacons[i].uuid && pluginResult.region.major == this.monitorBeacons[i].major && pluginResult.region.minor == this.monitorBeacons[i].minor) {
+        	if(pluginResult.region.uuid.toLowerCase() == this.monitorBeacons[i].uuid.toLowerCase() && pluginResult.region.major == this.monitorBeacons[i].major && pluginResult.region.minor == this.monitorBeacons[i].minor) {
         		//set state label values
         		if(pluginResult.state == "CLRegionStateInside") {
         			state = 'inside';
