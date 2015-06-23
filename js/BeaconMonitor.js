@@ -245,46 +245,52 @@ BeaconMonitor.prototype.setDeligate = function() {
 
         //update visuals for ranged iBeacon
         for(i=0; i<this.rangeBeacons.length; i++) {
-        	if(pluginResult.region.uuid == this.rangeBeacons[i].uuid && pluginResult.region.major == this.rangeBeacons[i].major && pluginResult.region.minor == this.rangeBeacons[i].minor) {
-        		//set RSSI value
-        		this.rangeBeacons[i].rssi = pluginResult.beacons[0].rssi;
-        		document.getElementById('rBeaconRSSI' + this.rangeBeacons[i].i).innerHTML = pluginResult.beacons[0].rssi;
+        	
+            //Work around Android not picking up iBeacons sometimes when event is fired (issue posted)
+            if(pluginResult.hasOwnProperty('beacons') && pluginResult.beacons.length > 0) {
 
-        		//set range/range label values
-        		switch(pluginResult.beacons[0].proximity) {
-        			case 'ProximityImmediate':
-        				prox = 'immediate';
-        				break;
-        			case 'ProximityNear':
-        				prox = 'near';
-        				break;
-        			case 'ProximityFar':
-        				prox = 'far';
-        				break;
-        			case 'ProximityUnknown':
-        				prox = 'unknown';
-        				break;
-        			default:
-        				prox = 'unknown';
-        		}
+                //toLowerCase(): Android returning lowercase UUID while iOS returning uppercase (issue posted)
+                if(pluginResult.region.uuid.toLowerCase() == this.rangeBeacons[i].uuid.toLowerCase() && pluginResult.region.major == this.rangeBeacons[i].major && pluginResult.region.minor == this.rangeBeacons[i].minor) {
+            		//set RSSI value
+            		this.rangeBeacons[i].rssi = pluginResult.beacons[0].rssi;
+            		document.getElementById('rBeaconRSSI' + this.rangeBeacons[i].i).innerHTML = pluginResult.beacons[0].rssi;
 
-        		this.rangeBeacons[i].prox = prox;
-        		document.getElementById('rBeaconRangeLabel' + this.rangeBeacons[i].i).innerHTML = prox.toUpperCase();
-        		document.getElementById('rBeaconRange' + this.rangeBeacons[i].i).className = "col col-range range-" + prox;
+            		//set range/range label values
+            		switch(pluginResult.beacons[0].proximity) {
+            			case 'ProximityImmediate':
+            				prox = 'immediate';
+            				break;
+            			case 'ProximityNear':
+            				prox = 'near';
+            				break;
+            			case 'ProximityFar':
+            				prox = 'far';
+            				break;
+            			case 'ProximityUnknown':
+            				prox = 'unknown';
+            				break;
+            			default:
+            				prox = 'unknown';
+            		}
 
-        		//star closest iBeacon
-        		this.starClosestBeacon();
+            		this.rangeBeacons[i].prox = prox;
+            		document.getElementById('rBeaconRangeLabel' + this.rangeBeacons[i].i).innerHTML = prox.toUpperCase();
+            		document.getElementById('rBeaconRange' + this.rangeBeacons[i].i).className = "col col-range range-" + prox;
 
-        		//update graph with new data
-        		try {
-        			//this.logToDom(this.rangeBeacons[i].rssi + " : " + pluginResult.beacons[0].accuracy + " : " + this.rangeBeacons[i].i);
-        			this.signalGraph.pushRangeData(this.rangeBeacons[i].rssi, pluginResult.beacons[0].accuracy, this.rangeBeacons[i].i);
-        		} catch(err) {
-        			this.logToDom(err);
-        		}
+            		//star closest iBeacon
+            		this.starClosestBeacon();
 
-        		break;
-        	}
+            		//update graph with new data
+            		try {
+            			//this.logToDom(this.rangeBeacons[i].rssi + " : " + pluginResult.beacons[0].accuracy + " : " + this.rangeBeacons[i].i);
+            			this.signalGraph.pushRangeData(this.rangeBeacons[i].rssi, pluginResult.beacons[0].accuracy, this.rangeBeacons[i].i);
+            		} catch(err) {
+            			this.logToDom(err);
+            		}
+
+            		break;
+            	}
+            }
         }
 
         //logToDom('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
